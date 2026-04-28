@@ -1,3 +1,5 @@
+<img width="1076" height="261" alt="banner" src="https://github.com/user-attachments/assets/d452963a-4f86-4a61-b3d7-76cd213b80b3" />
+
 
 # Tokoku Inertia
 
@@ -11,6 +13,7 @@ Must have this installed:
 - PHP
 - npm
 - MySQL
+
 ## Installation
 
 ### Clone this repository
