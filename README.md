@@ -1,10 +1,12 @@
 <img width="1076" height="261" alt="banner" src="https://github.com/user-attachments/assets/d452963a-4f86-4a61-b3d7-76cd213b80b3" />
 
 
-# Tokoku Inertia
+# Tokoku
 
 Easy way to track sales, orders, and items
 for F&B or event merch booths.
+
+Laravel Inertia + React
 
 
 ## Prerequisites
