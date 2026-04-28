@@ -1,0 +1,421 @@
+import React from "react";
+import { Link, Head } from '@inertiajs/react'
+import DashboardLayout from "./DashboardLayout";
+
+export default function Dashboard() {
+    return (
+        <DashboardLayout>
+            <div class="p-4 lg:p-6 w-full">
+                <nav class="flex items-center space-x-2 text-sm mb-6">
+                    <Link
+                        href="/"
+                        class="flex items-center text-gray-700 hover:text-blue-500 fill-current"
+                    >
+                        <svg
+                            width="24"
+                            height="24"
+                            viewBox="0 0 32 24"
+                            xmlns="http://www.w3.org/2000/svg"
+                        >
+                            <path
+                                fill-rule="evenodd"
+                                clip-rule="evenodd"
+                                d="M13.5578 5.53423C12.6873 4.69887 11.3127 4.69887 10.4422 5.53423L5.81574 9.97357C5.70239 10.0823 5.62614 10.224 5.5978 10.3785C5.04367 13.4004 5.00277 16.494 5.47681 19.5295L5.58933 20.25H8.56579V14.0387C8.56579 13.6244 8.90158 13.2887 9.31579 13.2887H14.6842C15.0984 13.2887 15.4342 13.6244 15.4342 14.0387V20.25H18.4107L18.5232 19.5295C18.9972 16.494 18.9563 13.4004 18.4022 10.3785C18.3739 10.224 18.2976 10.0823 18.1843 9.97357L13.5578 5.53423ZM9.40363 4.45191C10.8546 3.05965 13.1454 3.05965 14.5964 4.45191L19.2228 8.89125C19.5634 9.21804 19.7925 9.64373 19.8776 10.108C20.4621 13.2956 20.5053 16.559 20.0052 19.7609L19.8245 20.9184C19.7497 21.3971 19.3374 21.75 18.8529 21.75H14.6842C14.27 21.75 13.9342 21.4142 13.9342 21V14.7887H10.0658V21C10.0658 21.4142 9.73 21.75 9.31579 21.75H5.14706C4.66258 21.75 4.25029 21.3971 4.17554 20.9184L3.99478 19.7609C3.49473 16.559 3.53788 13.2956 4.12241 10.108C4.20754 9.64373 4.43662 9.21804 4.77719 8.89125L9.40363 4.45191Z"
+                            />
+                        </svg>
+                    </Link>
+                    <svg
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <path
+                            fill-rule="evenodd"
+                            clip-rule="evenodd"
+                            d="M9.96967 7.46967C10.2626 7.17678 10.7374 7.17678 11.0303 7.46967L15.0303 11.4697C15.3232 11.7626 15.3232 12.2374 15.0303 12.5303L11.0303 16.5303C10.7374 16.8232 10.2626 16.8232 9.96967 16.5303C9.67678 16.2374 9.67678 15.7626 9.96967 15.4697L13.4393 12L9.96967 8.53033C9.67678 8.23744 9.67678 7.76256 9.96967 7.46967Z"
+                        />
+                    </svg>
+                    <Link
+                        href="/dashboard"
+                        class="flex items-center text-gray-700 hover:text-blue-500"
+                    >
+                        Dashboard
+                    </Link>
+                </nav>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
+                    <div class="card bg-white shadow rounded-lg p-3 md:p-6 transition-all duration-200 relative overflow-hidden flex items-start justify-between">
+                        <div class="flex-1">
+                            <p class="text-sm font-medium text-gray-700 mb-1">
+                                Total Revenue
+                            </p>
+                            <p class="text-3xl font-bold text-gray-800 mb-2">
+                                Rp120.000
+                            </p>
+                            <div class="flex items-center gap-2">
+                                <span class="bg-green-100 border border-green-400 rounded-lg px-2 py-0.5 text-xs flex items-center gap-1">
+                                    20%
+                                </span>
+                                <span>from yesterday</span>
+                            </div>
+                        </div>
+                        <div class="p-3 rounded-xl bg-green-100 text-green-400 fill-current">
+                            <span class="font-bold">Rp</span>
+                        </div>
+                    </div>
+                    <div class="card bg-white shadow rounded-lg p-3 md:p-6 transition-all duration-200 relative overflow-hidden flex items-start justify-between">
+                        <div class="flex-1">
+                            <p class="text-sm font-medium text-gray-700 mb-1">
+                                Total Orders
+                            </p>
+                            <p class="text-3xl font-bold text-gray-800 mb-2">
+                                100
+                            </p>
+                            <div class="flex items-center gap-2">
+                                <span class="bg-green-100 border border-green-400 rounded-lg px-2 py-0.5 text-xs flex items-center gap-1">
+                                    10%
+                                </span>
+                                <span>from yesterday</span>
+                            </div>
+                        </div>
+                        <div class="p-3 rounded-xl bg-green-100 text-green-400 fill-current">
+                            <svg
+                                width="24"
+                                height="24"
+                                viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <path d="M7.53033 6.53033C7.82322 6.23744 7.82322 5.76256 7.53033 5.46967C7.23744 5.17678 6.76256 5.17678 6.46967 5.46967L4.46967 7.46967C4.17678 7.76256 4.17678 8.23744 4.46967 8.53033L6.46967 10.5303C6.76256 10.8232 7.23744 10.8232 7.53033 10.5303C7.82322 10.2374 7.82322 9.76256 7.53033 9.46967L6.81066 8.75H17C17.4142 8.75 17.75 8.41421 17.75 8C17.75 7.58579 17.4142 7.25 17 7.25H6.81066L7.53033 6.53033Z" />
+                                <path d="M16.4697 13.4697C16.1768 13.7626 16.1768 14.2374 16.4697 14.5303L17.1893 15.25H7C6.58579 15.25 6.25 15.5858 6.25 16C6.25 16.4142 6.58579 16.75 7 16.75H17.1893L16.4697 17.4697C16.1768 17.7626 16.1768 18.2374 16.4697 18.5303C16.7626 18.8232 17.2374 18.8232 17.5303 18.5303L19.5303 16.5303C19.8232 16.2374 19.8232 15.7626 19.5303 15.4697L17.5303 13.4697C17.2374 13.1768 16.7626 13.1768 16.4697 13.4697Z" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="card bg-white shadow rounded-lg p-3 md:p-6 transition-all duration-200 relative overflow-hidden flex items-start justify-between">
+                        <div class="flex-1">
+                            <p class="text-sm font-medium text-gray-700 mb-1">
+                                Total Products
+                            </p>
+                            <p class="text-3xl font-bold text-gray-800 mb-2">
+                                25
+                            </p>
+                        </div>
+                        <div class="p-3 rounded-xl bg-green-100 text-green-400 fill-current">
+                            <svg
+                                width="24"
+                                height="24"
+                                viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <path
+                                    fill-rule="evenodd"
+                                    clip-rule="evenodd"
+                                    d="M6.53518 3.25C5.95006 3.25 5.40366 3.54243 5.07909 4.02927L1.48987 9.41311C1.27014 9.74271 1.24386 10.1648 1.42101 10.5191C3.38512 14.4473 6.11467 17.9432 9.44923 20.8014L11.2 22.3021C11.6603 22.6967 12.3397 22.6967 12.8 22.3021L14.5508 20.8014C17.8853 17.9432 20.6149 14.4473 22.579 10.5191C22.7561 10.1648 22.7299 9.74271 22.5101 9.41311L18.9209 4.02927C18.5963 3.54243 18.0499 3.25 17.4648 3.25H6.53518ZM6.32717 4.86132C6.37353 4.79178 6.45159 4.75 6.53518 4.75H8.87499L6.95987 9.34629C6.91576 9.45216 6.88246 9.56135 6.86002 9.67224C6.15619 9.61985 5.45296 9.55669 4.75057 9.48276L3.34486 9.33479L6.32717 4.86132ZM3.27865 10.8361C5.07205 14.1261 7.44021 17.0714 10.2732 19.5312L7.14775 11.1967C6.29541 11.1381 5.44387 11.064 4.59355 10.9745L3.27865 10.8361ZM8.78481 11.2902L12 19.864L15.2152 11.2902C13.0728 11.3876 10.9272 11.3876 8.78481 11.2902ZM16.8523 11.1967L13.7268 19.5312C16.5598 17.0714 18.9279 14.1261 20.7213 10.8361L19.4064 10.9745C18.5561 11.064 17.7046 11.1381 16.8523 11.1967ZM20.6551 9.33479L19.2494 9.48276C18.547 9.55669 17.8438 9.61985 17.14 9.67224C17.1175 9.56135 17.0842 9.45216 17.0401 9.34629L15.125 4.75H17.4648C17.5484 4.75 17.6265 4.79178 17.6728 4.86133L20.6551 9.33479ZM15.5917 9.77005C13.1988 9.89432 10.8012 9.89432 8.4083 9.77005L10.5 4.75H13.5L15.5917 9.77005Z"
+                                />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="rounded-lg transition-all duration-200 relative overflow-hidden flex items-start justify-between flex-1 gap-2">
+                        <Link
+                            href="catalog.html"
+                            target="_blank"
+                            class="w-full h-full"
+                        >
+                            <button
+                                type="button"
+                                class="flex items-center space-x-2 w-full h-full p-4 border border-blue-500 border-2 text-blue-500 hover:bg-blue-700 hover:text-white rounded-lg transition-colors fill-current cursor-pointer"
+                            >
+                                <svg
+                                    width="24"
+                                    height="24"
+                                    viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <path
+                                        fill-rule="evenodd"
+                                        clip-rule="evenodd"
+                                        d="M7.25 7.25V7.13012C7.25 4.96238 8.71761 3.06964 10.8171 2.52979C11.5931 2.33024 12.4069 2.33024 13.1829 2.52979C15.2824 3.06964 16.75 4.96238 16.75 7.13013V7.25H18.2511C18.8224 7.25 19.3072 7.66898 19.3901 8.23423L19.6087 9.72668C20.0393 12.6651 20.0393 15.6507 19.6087 18.5891C19.4008 20.0081 18.2565 21.1052 16.83 21.2531L16.2011 21.3183C13.4079 21.608 10.5921 21.608 7.79887 21.3183L7.17 21.2531C5.74346 21.1052 4.59917 20.0081 4.39125 18.5891C3.96071 15.6507 3.96071 12.6651 4.39125 9.72668L4.60993 8.23423C4.69275 7.66898 5.17759 7.25 5.74887 7.25H7.25ZM11.1906 3.98252C11.7216 3.84599 12.2784 3.84599 12.8094 3.98252C14.2458 4.3519 15.25 5.64693 15.25 7.13013V7.25H8.75V7.13012C8.75 5.64693 9.75415 4.3519 11.1906 3.98252ZM7.25 8.75V11C7.25 11.4142 7.58579 11.75 8 11.75C8.41421 11.75 8.75 11.4142 8.75 11V8.75H15.25V11C15.25 11.4142 15.5858 11.75 16 11.75C16.4142 11.75 16.75 11.4142 16.75 11V8.75H17.9496L18.1246 9.94414C18.534 12.7384 18.534 15.5774 18.1246 18.3717C18.0161 19.1118 17.4193 19.684 16.6753 19.7611L16.0464 19.8264C13.356 20.1054 10.644 20.1054 7.95359 19.8264L7.32472 19.7611C6.58068 19.684 5.98385 19.1118 5.87541 18.3717C5.46599 15.5774 5.46599 12.7384 5.87541 9.94414L6.05037 8.75H7.25Z"
+                                    />
+                                </svg>
+                                <span>Open Catalog</span>
+                            </button>
+                        </Link>
+                        <Link
+                            href="/transactions/form"
+                            data-page="form"
+                            class="w-full h-full p-4 bg-blue-500 hover:bg-blue-700 text-white rounded-lg transition-colors fill-current"
+                        >
+                            <button
+                                type="button"
+                                class="flex items-center space-x-2 w-full h-full cursor-pointer"
+                            >
+                                <svg
+                                    width="24"
+                                    height="24"
+                                    viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <path d="M13.5 9.75002C13.5 9.3358 13.1642 9.00002 12.75 9.00002H6.75C6.33579 9.00002 6 9.3358 6 9.75002C6 10.1642 6.33579 10.5 6.75 10.5H12.75C13.1642 10.5 13.5 10.1642 13.5 9.75002Z" />
+                                    <path d="M12.5 12.75C12.5 12.3358 12.1642 12 11.75 12H6.75C6.33579 12 6 12.3358 6 12.75C6 13.1642 6.33579 13.5 6.75 13.5H11.75C12.1642 13.5 12.5 13.1642 12.5 12.75Z" />
+                                    <path d="M12.75 15C13.1642 15 13.5 15.3358 13.5 15.75C13.5 16.1642 13.1642 16.5 12.75 16.5H6.75C6.33579 16.5 6 16.1642 6 15.75C6 15.3358 6.33579 15 6.75 15H12.75Z" />
+                                    <path
+                                        fill-rule="evenodd"
+                                        clip-rule="evenodd"
+                                        d="M6 21.75H19C20.5188 21.75 21.75 20.5188 21.75 19V13.5C21.75 13.0858 21.4142 12.75 21 12.75H17.75V4.94321C17.75 3.51981 16.1411 2.69184 14.9828 3.51918L14.8078 3.64421C14.0273 4.2017 12.9701 4.19983 12.1859 3.63972C10.8821 2.70839 9.11794 2.70839 7.81407 3.63972C7.02992 4.19983 5.9727 4.2017 5.19221 3.64421L5.01717 3.51918C3.8589 2.69184 2.25 3.51981 2.25 4.94321V18C2.25 20.0711 3.92893 21.75 6 21.75ZM8.68593 4.86032C9.46825 4.30152 10.5318 4.30152 11.3141 4.86032C12.6161 5.79035 14.3739 5.79745 15.6796 4.86481L15.8547 4.73978C16.0202 4.62159 16.25 4.73987 16.25 4.94321V19C16.25 19.4501 16.3581 19.875 16.5499 20.25H6C4.75736 20.25 3.75 19.2427 3.75 18V4.94321C3.75 4.73987 3.97984 4.62159 4.14531 4.73978L4.32036 4.86481C5.62605 5.79745 7.3839 5.79034 8.68593 4.86032ZM17.75 19V14.25H20.25V19C20.25 19.6904 19.6904 20.25 19 20.25C18.3096 20.25 17.75 19.6904 17.75 19Z"
+                                    />
+                                </svg>
+                                <span>Create Invoice</span>
+                            </button>
+                        </Link>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                    <div class="card bg-white shadow rounded-lg p-3 md:p-6 transition-all duration-200 relative overflow-hidden flex items-start justify-between">
+                        <div class="flex-1 flex flex-col">
+                            <div class="mb-6">
+                                <h2 class="font-bold text-gray-700 mb-1">
+                                    Revenue Overview
+                                </h2>
+                                <p class="text-xs text-gray-500">
+                                    January - December 2026
+                                </p>
+                            </div>
+
+                            <div class="flex h-64 w-full gap-2 md:gap-4 mt-auto">
+                                <div class="flex flex-col justify-between text-[10px] sm:text-xs text-gray-400 text-right pb-8 font-medium">
+                                    <span>1.000.000</span>
+                                    <span>750.000</span>
+                                    <span>500.000</span>
+                                    <span>250.000</span>
+                                    <span>0</span>
+                                </div>
+
+                                <div class="relative flex-1 flex items-end justify-between gap-1 sm:gap-2">
+                                    <div class="absolute inset-0 pb-8 flex flex-col justify-between pointer-events-none z-0">
+                                        <div class="w-full border-t border-gray-200 border-dashed"></div>
+                                        <div class="w-full border-t border-gray-200 border-dashed"></div>
+                                        <div class="w-full border-t border-gray-200 border-dashed"></div>
+                                        <div class="w-full border-t border-gray-200 border-dashed"></div>
+                                        <div class="w-full border-t border-gray-300"></div>
+                                    </div>
+
+                                    <div class="relative flex flex-col items-center justify-end flex-1 h-full z-10">
+                                        <div class="w-full sm:w-3/4 bg-blue-500 hover:bg-blue-600 rounded-t-sm md:rounded-t-md transition-all h-[30%] relative group cursor-pointer">
+                                            <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 opacity-0 group-hover:opacity-100 bg-gray-800 text-white text-[10px] sm:text-xs py-1 px-2 rounded pointer-events-none transition-opacity z-20 whitespace-nowrap">
+                                                Rp 300.000
+                                            </div>
+                                        </div>
+                                        <div class="h-8 flex items-end justify-center w-full">
+                                            <span class="text-[10px] sm:text-xs text-gray-500">
+                                                Jan
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    <div class="relative flex flex-col items-center justify-end flex-1 h-full z-10">
+                                        <div class="w-full sm:w-3/4 bg-blue-500 hover:bg-blue-600 rounded-t-sm md:rounded-t-md transition-all h-[45%] relative group cursor-pointer">
+                                            <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 opacity-0 group-hover:opacity-100 bg-gray-800 text-white text-[10px] sm:text-xs py-1 px-2 rounded pointer-events-none transition-opacity z-20 whitespace-nowrap">
+                                                Rp 450.000
+                                            </div>
+                                        </div>
+                                        <div class="h-8 flex items-end justify-center w-full">
+                                            <span class="text-[10px] sm:text-xs text-gray-500">
+                                                Feb
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    <div class="relative flex flex-col items-center justify-end flex-1 h-full z-10">
+                                        <div class="w-full sm:w-3/4 bg-blue-500 hover:bg-blue-600 rounded-t-sm md:rounded-t-md transition-all h-[35%] relative group cursor-pointer">
+                                            <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 opacity-0 group-hover:opacity-100 bg-gray-800 text-white text-[10px] sm:text-xs py-1 px-2 rounded pointer-events-none transition-opacity z-20 whitespace-nowrap">
+                                                Rp 350.000
+                                            </div>
+                                        </div>
+                                        <div class="h-8 flex items-end justify-center w-full">
+                                            <span class="text-[10px] sm:text-xs text-gray-500">
+                                                Mar
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    <div class="relative flex flex-col items-center justify-end flex-1 h-full z-10">
+                                        <div class="w-full sm:w-3/4 bg-blue-500 hover:bg-blue-600 rounded-t-sm md:rounded-t-md transition-all h-[50%] relative group cursor-pointer">
+                                            <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 opacity-0 group-hover:opacity-100 bg-gray-800 text-white text-[10px] sm:text-xs py-1 px-2 rounded pointer-events-none transition-opacity z-20 whitespace-nowrap">
+                                                Rp 500.000
+                                            </div>
+                                        </div>
+                                        <div class="h-8 flex items-end justify-center w-full">
+                                            <span class="text-[10px] sm:text-xs text-gray-500">
+                                                Apr
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    <div class="relative flex flex-col items-center justify-end flex-1 h-full z-10">
+                                        <div class="w-full sm:w-3/4 bg-blue-500 hover:bg-blue-600 rounded-t-sm md:rounded-t-md transition-all h-[40%] relative group cursor-pointer">
+                                            <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 opacity-0 group-hover:opacity-100 bg-gray-800 text-white text-[10px] sm:text-xs py-1 px-2 rounded pointer-events-none transition-opacity z-20 whitespace-nowrap">
+                                                Rp 400.000
+                                            </div>
+                                        </div>
+                                        <div class="h-8 flex items-end justify-center w-full">
+                                            <span class="text-[10px] sm:text-xs text-gray-500">
+                                                May
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    <div class="relative flex flex-col items-center justify-end flex-1 h-full z-10">
+                                        <div class="w-full sm:w-3/4 bg-blue-500 hover:bg-blue-600 rounded-t-sm md:rounded-t-md transition-all h-[65%] relative group cursor-pointer">
+                                            <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 opacity-0 group-hover:opacity-100 bg-gray-800 text-white text-[10px] sm:text-xs py-1 px-2 rounded pointer-events-none transition-opacity z-20 whitespace-nowrap">
+                                                Rp 650.000
+                                            </div>
+                                        </div>
+                                        <div class="h-8 flex items-end justify-center w-full">
+                                            <span class="text-[10px] sm:text-xs text-gray-500">
+                                                Jun
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    <div class="relative flex flex-col items-center justify-end flex-1 h-full z-10">
+                                        <div class="w-full sm:w-3/4 bg-blue-500 hover:bg-blue-600 rounded-t-sm md:rounded-t-md transition-all h-[60%] relative group cursor-pointer">
+                                            <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 opacity-0 group-hover:opacity-100 bg-gray-800 text-white text-[10px] sm:text-xs py-1 px-2 rounded pointer-events-none transition-opacity z-20 whitespace-nowrap">
+                                                Rp 600.000
+                                            </div>
+                                        </div>
+                                        <div class="h-8 flex items-end justify-center w-full">
+                                            <span class="text-[10px] sm:text-xs text-gray-500">
+                                                Jul
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    <div class="relative flex flex-col items-center justify-end flex-1 h-full z-10">
+                                        <div class="w-full sm:w-3/4 bg-blue-500 hover:bg-blue-600 rounded-t-sm md:rounded-t-md transition-all h-[80%] relative group cursor-pointer">
+                                            <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 opacity-0 group-hover:opacity-100 bg-gray-800 text-white text-[10px] sm:text-xs py-1 px-2 rounded pointer-events-none transition-opacity z-20 whitespace-nowrap">
+                                                Rp 800.000
+                                            </div>
+                                        </div>
+                                        <div class="h-8 flex items-end justify-center w-full">
+                                            <span class="text-[10px] sm:text-xs text-gray-500">
+                                                Aug
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    <div class="relative flex flex-col items-center justify-end flex-1 h-full z-10">
+                                        <div class="w-full sm:w-3/4 bg-blue-500 hover:bg-blue-600 rounded-t-sm md:rounded-t-md transition-all h-[70%] relative group cursor-pointer">
+                                            <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 opacity-0 group-hover:opacity-100 bg-gray-800 text-white text-[10px] sm:text-xs py-1 px-2 rounded pointer-events-none transition-opacity z-20 whitespace-nowrap">
+                                                Rp 700.000
+                                            </div>
+                                        </div>
+                                        <div class="h-8 flex items-end justify-center w-full">
+                                            <span class="text-[10px] sm:text-xs text-gray-500">
+                                                Sep
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    <div class="relative flex flex-col items-center justify-end flex-1 h-full z-10">
+                                        <div class="w-full sm:w-3/4 bg-blue-500 hover:bg-blue-600 rounded-t-sm md:rounded-t-md transition-all h-[90%] relative group cursor-pointer">
+                                            <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 opacity-0 group-hover:opacity-100 bg-gray-800 text-white text-[10px] sm:text-xs py-1 px-2 rounded pointer-events-none transition-opacity z-20 whitespace-nowrap">
+                                                Rp 900.000
+                                            </div>
+                                        </div>
+                                        <div class="h-8 flex items-end justify-center w-full">
+                                            <span class="text-[10px] sm:text-xs text-gray-500">
+                                                Oct
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    <div class="relative flex flex-col items-center justify-end flex-1 h-full z-10">
+                                        <div class="w-full sm:w-3/4 bg-blue-500 hover:bg-blue-600 rounded-t-sm md:rounded-t-md transition-all h-[85%] relative group cursor-pointer">
+                                            <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 opacity-0 group-hover:opacity-100 bg-gray-800 text-white text-[10px] sm:text-xs py-1 px-2 rounded pointer-events-none transition-opacity z-20 whitespace-nowrap">
+                                                Rp 850.000
+                                            </div>
+                                        </div>
+                                        <div class="h-8 flex items-end justify-center w-full">
+                                            <span class="text-[10px] sm:text-xs text-gray-500">
+                                                Nov
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    <div class="relative flex flex-col items-center justify-end flex-1 h-full z-10">
+                                        <div class="w-full sm:w-3/4 bg-blue-500 hover:bg-blue-600 rounded-t-sm md:rounded-t-md transition-all h-[100%] relative group cursor-pointer">
+                                            <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 opacity-0 group-hover:opacity-100 bg-gray-800 text-white text-[10px] sm:text-xs py-1 px-2 rounded pointer-events-none transition-opacity z-20 whitespace-nowrap">
+                                                Rp 1.000.000
+                                            </div>
+                                        </div>
+                                        <div class="h-8 flex items-end justify-center w-full">
+                                            <span class="text-[10px] sm:text-xs text-gray-500">
+                                                Dec
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card bg-white shadow rounded-lg p-3 md:p-6 transition-all duration-200 relative overflow-hidden flex items-start justify-between">
+                        <div class="flex-1">
+                            <h2 class="font-bold text-gray-700 mb-1">
+                                Recent Transactions
+                            </h2>
+                            <div class="flex-1 space-y-4">
+                                <div class="flex items-center justify-between py-3 border-b border-gray-400 last:border-0">
+                                    <div class="flex-1">
+                                        <p class="font-medium text-gray-700">
+                                            John Doe
+                                        </p>
+                                        <p class="text-sm text-gray-600">
+                                            Anime A5 Sticker
+                                        </p>
+                                    </div>
+                                    <div class="text-right">
+                                        <p class="font-medium">Rp20.000</p>
+                                        <span class="bg-green-100 px-2 py-0.5 text-xs rounded-lg">
+                                            Completed
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="flex items-center justify-between py-3 border-b border-gray-400 last:border-0">
+                                    <div class="flex-1">
+                                        <p class="font-medium text-gray-700">
+                                            Jane Doe
+                                        </p>
+                                        <p class="text-sm text-gray-600">
+                                            Keychain
+                                        </p>
+                                    </div>
+                                    <div class="text-right">
+                                        <p class="font-medium">Rp15.000</p>
+                                        <span class="bg-green-100 px-2 py-0.5 text-xs rounded-lg">
+                                            Completed
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="flex items-center justify-between py-3 border-b border-gray-400 last:border-0">
+                                    <div class="flex-1">
+                                        <p class="font-medium text-gray-700">
+                                            Sam Baldman
+                                        </p>
+                                        <p class="text-sm text-gray-600">
+                                            Anime Poster
+                                        </p>
+                                    </div>
+                                    <div class="text-right">
+                                        <p class="font-medium">Rp40.000</p>
+                                        <span class="bg-yellow-100 px-2 py-0.5 text-xs rounded-lg">
+                                            Preorder
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </DashboardLayout>
+    );
+}

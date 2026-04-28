@@ -1,0 +1,154 @@
+import React from 'react'
+import DashboardLayout from "./DashboardLayout";
+import { Link, Head } from '@inertiajs/react'
+
+export default function Products() {
+  return (
+    <DashboardLayout>
+        <Head title="Products"/>
+        <div class="p-4 lg:p-6 min-h-screen w-full">
+        <nav class="flex items-center space-x-2 text-sm mb-6">
+            <a onclick="parent.postMessage({ 'type': 'dashboard' }, '*')" class="flex items-center text-gray-700 hover:text-blue-500 fill-current">
+                <svg width="24" height="24" viewBox="0 0 32 24" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M13.5578 5.53423C12.6873 4.69887 11.3127 4.69887 10.4422 5.53423L5.81574 9.97357C5.70239 10.0823 5.62614 10.224 5.5978 10.3785C5.04367 13.4004 5.00277 16.494 5.47681 19.5295L5.58933 20.25H8.56579V14.0387C8.56579 13.6244 8.90158 13.2887 9.31579 13.2887H14.6842C15.0984 13.2887 15.4342 13.6244 15.4342 14.0387V20.25H18.4107L18.5232 19.5295C18.9972 16.494 18.9563 13.4004 18.4022 10.3785C18.3739 10.224 18.2976 10.0823 18.1843 9.97357L13.5578 5.53423ZM9.40363 4.45191C10.8546 3.05965 13.1454 3.05965 14.5964 4.45191L19.2228 8.89125C19.5634 9.21804 19.7925 9.64373 19.8776 10.108C20.4621 13.2956 20.5053 16.559 20.0052 19.7609L19.8245 20.9184C19.7497 21.3971 19.3374 21.75 18.8529 21.75H14.6842C14.27 21.75 13.9342 21.4142 13.9342 21V14.7887H10.0658V21C10.0658 21.4142 9.73 21.75 9.31579 21.75H5.14706C4.66258 21.75 4.25029 21.3971 4.17554 20.9184L3.99478 19.7609C3.49473 16.559 3.53788 13.2956 4.12241 10.108C4.20754 9.64373 4.43662 9.21804 4.77719 8.89125L9.40363 4.45191Z"/>
+                </svg>
+            </a>
+            <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M9.96967 7.46967C10.2626 7.17678 10.7374 7.17678 11.0303 7.46967L15.0303 11.4697C15.3232 11.7626 15.3232 12.2374 15.0303 12.5303L11.0303 16.5303C10.7374 16.8232 10.2626 16.8232 9.96967 16.5303C9.67678 16.2374 9.67678 15.7626 9.96967 15.4697L13.4393 12L9.96967 8.53033C9.67678 8.23744 9.67678 7.76256 9.96967 7.46967Z"/>
+            </svg>
+            <a href="" class="flex items-center text-gray-700 hover:text-blue-500">Products</a>
+        </nav>
+
+        <div class="bg-white rounded-lg p-4 md:p-6 mb-6 flex flex-col md:flex-row md:items-center gap-4">
+            <h1 class="text-xl md:text-3xl font-bold text-gray-800 flex-1">Products</h1>
+            <div class="flex flex-col sm:flex-row gap-2 md:ml-auto">
+                <a href="./../catalog.html" target="_blank" data-page="form">
+                    <button class="flex flex-1 w-full items-center justify-center space-x-2 border-2 border-blue-500 text-blue-500 hover:bg-blue-700 hover:text-white px-4 md:px-6 py-2 rounded-lg transition-colors font-medium fill-current cursor-pointer">
+                        <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M7.25 7.25V7.13012C7.25 4.96238 8.71761 3.06964 10.8171 2.52979C11.5931 2.33024 12.4069 2.33024 13.1829 2.52979C15.2824 3.06964 16.75 4.96238 16.75 7.13013V7.25H18.2511C18.8224 7.25 19.3072 7.66898 19.3901 8.23423L19.6087 9.72668C20.0393 12.6651 20.0393 15.6507 19.6087 18.5891C19.4008 20.0081 18.2565 21.1052 16.83 21.2531L16.2011 21.3183C13.4079 21.608 10.5921 21.608 7.79887 21.3183L7.17 21.2531C5.74346 21.1052 4.59917 20.0081 4.39125 18.5891C3.96071 15.6507 3.96071 12.6651 4.39125 9.72668L4.60993 8.23423C4.69275 7.66898 5.17759 7.25 5.74887 7.25H7.25ZM11.1906 3.98252C11.7216 3.84599 12.2784 3.84599 12.8094 3.98252C14.2458 4.3519 15.25 5.64693 15.25 7.13013V7.25H8.75V7.13012C8.75 5.64693 9.75415 4.3519 11.1906 3.98252ZM7.25 8.75V11C7.25 11.4142 7.58579 11.75 8 11.75C8.41421 11.75 8.75 11.4142 8.75 11V8.75H15.25V11C15.25 11.4142 15.5858 11.75 16 11.75C16.4142 11.75 16.75 11.4142 16.75 11V8.75H17.9496L18.1246 9.94414C18.534 12.7384 18.534 15.5774 18.1246 18.3717C18.0161 19.1118 17.4193 19.684 16.6753 19.7611L16.0464 19.8264C13.356 20.1054 10.644 20.1054 7.95359 19.8264L7.32472 19.7611C6.58068 19.684 5.98385 19.1118 5.87541 18.3717C5.46599 15.5774 5.46599 12.7384 5.87541 9.94414L6.05037 8.75H7.25Z"/></svg>
+                        <span>Open Catalog</span>
+                    </button>
+                </a>
+
+                <a onclick="parent.postMessage({ 'type': 'page', 'to': 'products-form' }, '*')" data-page="form">
+                    <button class="flex flex-1 w-full items-center justify-center space-x-2 bg-blue-500 hover:bg-blue-700 text-white px-4 md:px-6 py-2 rounded-lg transition-colors font-medium cursor-pointer">
+                        <svg width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm5 11h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"/>
+                        </svg>
+                        <span>Add Product</span>
+                    </button>
+                </a>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-lg p-4 md:p-6">
+            <div class="mb-6 flex items-center gap-4">
+                <div class="relative flex-1">
+                    <svg class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 fill-current" width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M10.5 3.25C6.30558 3.25 2.75 6.80558 2.75 11C2.75 15.1944 6.30558 18.75 10.5 18.75C12.2035 18.75 13.8129 18.2187 15.0881 17.3107L20.4697 22.6924C20.7626 22.9853 21.2374 22.9853 21.5303 22.6924C21.8232 22.3995 21.8232 21.9247 21.5303 21.6318L16.1486 16.2501C17.0567 15.0249 17.75 13.4155 17.75 11.75C17.75 11.3358 17.4142 11 17 11C16.5858 11 16.25 11.3358 16.25 11.75C16.25 14.4874 14.0374 16.75 11 16.75C7.68629 16.75 5 14.0137 5 10.75C5 7.48629 7.68629 4.75 11 4.75C14.0374 4.75 16.25 6.98629 16.25 9.75C16.25 10.1642 16.5858 10.5 17 10.5C17.4142 10.5 17.75 10.1642 17.75 9.75C17.75 8.0465 17.0567 6.43707 16.1486 5.21194C14.8129 4.30393 13.2035 3.75 11.5 3.75C6.73858 3.75 2.75 7.48629 2.75 12C2.75 15.1944 6.30558 18.75 10.5 18.75Z"/>
+                    </svg>
+                    <input type="text" placeholder="Search products..." class="w-1/2 md:w-1/4 pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 bg-white" />
+                </div>
+                <button class="flex items-center justify-center bg-white border border-gray-300 p-2 rounded-lg hover:bg-gray-50">
+                    <svg width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="text-gray-600">
+                        <path d="M6 13c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0-6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 12c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm6-18C11.88 1 11 1.88 11 3s.88 2 2 2 2-.88 2-2-.88-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 12c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm6-18c-1.12 0-2 .88-2 2s.88 2 2 2 2-.88 2-2-.88-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 12c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
+                    </svg>
+                </button>
+            </div>
+
+            <div class="overflow-x-auto">
+                <table class="w-full">
+                    <thead>
+                        <tr class="border-b-2 border-gray-300">
+                            <th class="text-left py-4 px-2 font-semibold text-gray-700">Id</th>
+                            <th class="text-left py-4 px-2 font-semibold text-gray-700">Name</th>
+                            <th class="text-left py-4 px-2 font-semibold text-gray-700">Description</th>
+                            <th class="text-left py-4 px-2 font-semibold text-gray-700">Price</th>
+                            <th class="text-left py-4 px-2 font-semibold text-gray-700">Stock</th>
+                            <th class="text-left py-4 px-2 font-semibold text-gray-700">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="border-b border-gray-200 hover:bg-white transition-colors">
+                            <td class="py-4 px-2 text-gray-700">P001</td>
+                            <td class="py-4 px-2 text-gray-700">
+                                <p class="font-medium">Keychain Demon Slayer</p>
+                            </td>
+                            <td class="py-4 px-2 text-gray-600 text-sm">Basic keychain KHY</td>
+                            <td class="py-4 px-2 text-gray-700 font-medium">Rp5.000</td>
+                            <td class="py-4 px-2 text-gray-600 text-sm">51</td>
+                            <td class="py-4 px-2">
+                                <a onclick="parent.postMessage({ 'type': 'page', 'to': 'products-form' }, '*')" class="text-blue-500 hover:text-blue-700 font-medium hover:cursor-pointer">View</a>
+                            </td>
+                        </tr>
+                        <tr class="border-b border-gray-200 hover:bg-white transition-colors">
+                            <td class="py-4 px-2 text-gray-700">P002</td>
+                            <td class="py-4 px-2 text-gray-700">
+                                <p class="font-medium">Sticker Jujutsu Kaisen Gojo Sa...</p>
+                            </td>
+                            <td class="py-4 px-2 text-gray-600 text-sm">4x12 stiker gojo satoru</td>
+                            <td class="py-4 px-2 text-gray-700 font-medium">Rp10.000</td>
+                            <td class="py-4 px-2 text-gray-600 text-sm">23</td>
+                            <td class="py-4 px-2">
+                                <a onclick="parent.postMessage({ 'type': 'page', 'to': 'products-form' }, '*')" class="text-blue-500 hover:text-blue-700 font-medium hover:cursor-pointer">View</a>
+                            </td>
+                        </tr>
+                        <tr class="border-b border-gray-200 hover:bg-white transition-colors">
+                            <td class="py-4 px-2 text-gray-700">P003</td>
+                            <td class="py-4 px-2 text-gray-700">
+                                <p class="font-medium">Poster Asa Mitaka</p>
+                            </td>
+                            <td class="py-4 px-2 text-gray-600 text-sm">asa mitaka chensou man ukuran 400x300mm be...</td>
+                            <td class="py-4 px-2 text-gray-700 font-medium">Rp50.000</td>
+                            <td class="py-4 px-2 text-gray-600 text-sm">27</td>
+                            <td class="py-4 px-2">
+                                <a onclick="parent.postMessage({ 'type': 'page', 'to': 'products-form' }, '*')" class="text-blue-500 hover:text-blue-700 font-medium hover:cursor-pointer">View</a>
+                            </td>
+                        </tr>
+                        <tr class="border-b border-gray-200 hover:bg-white transition-colors">
+                            <td class="py-4 px-2 text-gray-700">P004</td>
+                            <td class="py-4 px-2 text-gray-700">
+                                <p class="font-medium">Dakimakura Yor Forger</p>
+                            </td>
+                            <td class="py-4 px-2 text-gray-600 text-sm">high quality dakimakura dacron filled high resolu...</td>
+                            <td class="py-4 px-2 text-gray-700 font-medium">Rp250.000</td>
+                            <td class="py-4 px-2 text-gray-600 text-sm">40</td>
+                            <td class="py-4 px-2">
+                                <a onclick="parent.postMessage({ 'type': 'page', 'to': 'products-form' }, '*')" class="text-blue-500 hover:text-blue-700 font-medium hover:cursor-pointer">View</a>
+                            </td>
+                        </tr>
+                        <tr class="border-b border-gray-200 hover:bg-white transition-colors">
+                            <td class="py-4 px-2 text-gray-700">P005</td>
+                            <td class="py-4 px-2 text-gray-700">
+                                <p class="font-medium">Pin anime yotsuba series</p>
+                            </td>
+                            <td class="py-4 px-2 text-gray-600 text-sm">badge 30x30 yotsuba</td>
+                            <td class="py-4 px-2 text-gray-700 font-medium">Rp5.000</td>
+                            <td class="py-4 px-2 text-gray-600 text-sm">12</td>
+                            <td class="py-4 px-2">
+                                <a onclick="parent.postMessage({ 'type': 'page', 'to': 'products-form' }, '*')" class="text-blue-500 hover:text-blue-700 font-medium hover:cursor-pointer">View</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="flex items-center justify-center gap-2 mt-8">
+                <button class="p-2 hover:bg-gray-200 rounded-lg transition-colors">
+                    <svg width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="text-gray-600">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M15.7071 6.29289C16 6.58579 16 7.06066 15.7071 7.35355L10.0607 13L15.7071 18.6464C16 18.9393 16 19.4142 15.7071 19.7071C15.4142 20 14.9393 20 14.6464 19.7071L8.29289 13.3536C8 13.0607 8 12.5858 8.29289 12.2929L14.6464 5.93934C14.9393 5.64645 15.4142 5.64645 15.7071 5.93934C16 6.23223 16 6.70711 15.7071 7Z"/>
+                    </svg>
+                </button>
+                <button class="px-3 py-1 rounded-lg font-medium text-gray-700 hover:bg-gray-200 transition-colors">1</button>
+                <button class="px-3 py-1 rounded-lg font-medium text-gray-700 hover:bg-gray-200 transition-colors">2</button>
+                <button class="px-3 py-1 rounded-lg font-medium text-gray-700 hover:bg-gray-200 transition-colors">3</button>
+                <button class="p-2 hover:bg-gray-200 rounded-lg transition-colors">
+                    <svg width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="text-gray-600">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M8.29289 6.29289C8.58579 6 9.06066 6 9.35355 6.29289L15.7071 12.6464C16 12.9393 16 13.4142 15.7071 13.7071L9.35355 20.0607C9.06066 20.3536 8.58579 20.3536 8.29289 20.0607C8 19.7678 8 19.2929 8.29289 19L13.9393 13.3536L8.29289 7.70711C8 7.41421 8 6.93934 8.29289 6.64645C8.58579 6.35355 9.06066 6.35355 9.35355 6.64645L8.29289 6.29289Z"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+    </DashboardLayout>
+  )
+}

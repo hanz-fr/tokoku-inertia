@@ -1,0 +1,12 @@
+<?php
+
+use Illuminate\Support\Facades\Route;
+use Inertia\Inertia;
+
+Route::get('/', fn() => Inertia::render('Home'));
+Route::get('/dashboard', fn() => Inertia::render('Dashboard'));
+Route::get('/transactions', fn() => Inertia::render('Transactions'));
+Route::get('/payment', fn() => Inertia::render('Payment'));
+Route::get('/products', fn() => Inertia::render('Products'));
+Route::get('/booth', fn() => Inertia::render('Booth'));
+Route::get('/transactions/form', fn() => Inertia::render('TransactionsForm'));
