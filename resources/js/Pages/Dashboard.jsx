@@ -1,15 +1,17 @@
 import React from "react";
-import { Link, Head } from '@inertiajs/react'
+import { Link, Head } from "@inertiajs/react";
 import DashboardLayout from "./DashboardLayout";
+import Button from "../Components/Buttons";
+import { CatalogueIcon, InvoicePaperIcon } from "../Components/Icons";
 
 export default function Dashboard() {
     return (
         <DashboardLayout>
-            <div class="p-4 lg:p-6 w-full">
-                <nav class="flex items-center space-x-2 text-sm mb-6">
+            <div className="p-4 lg:p-6 w-full">
+                <nav className="flex items-center space-x-2 text-sm mb-6">
                     <Link
                         href="/"
-                        class="flex items-center text-gray-700 hover:text-blue-500 fill-current"
+                        className="flex items-center text-gray-700 hover:text-blue-500 fill-current"
                     >
                         <svg
                             width="24"
@@ -38,47 +40,47 @@ export default function Dashboard() {
                     </svg>
                     <Link
                         href="/dashboard"
-                        class="flex items-center text-gray-700 hover:text-blue-500"
+                        className="flex items-center text-gray-700 hover:text-blue-500"
                     >
                         Dashboard
                     </Link>
                 </nav>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
-                    <div class="card bg-white shadow rounded-lg p-3 md:p-6 transition-all duration-200 relative overflow-hidden flex items-start justify-between">
-                        <div class="flex-1">
-                            <p class="text-sm font-medium text-gray-700 mb-1">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
+                    <div className="card bg-white shadow rounded-lg p-3 md:p-6 transition-all duration-200 relative overflow-hidden flex items-start justify-between">
+                        <div className="flex-1">
+                            <p className="text-sm font-medium text-gray-700 mb-1">
                                 Total Revenue
                             </p>
-                            <p class="text-3xl font-bold text-gray-800 mb-2">
+                            <p className="text-3xl font-bold text-gray-800 mb-2">
                                 Rp120.000
                             </p>
-                            <div class="flex items-center gap-2">
-                                <span class="bg-green-100 border border-green-400 rounded-lg px-2 py-0.5 text-xs flex items-center gap-1">
+                            <div className="flex items-center gap-2">
+                                <span className="bg-green-100 border border-green-400 rounded-lg px-2 py-0.5 text-xs flex items-center gap-1">
                                     20%
                                 </span>
                                 <span>from yesterday</span>
                             </div>
                         </div>
-                        <div class="p-3 rounded-xl bg-green-100 text-green-400 fill-current">
-                            <span class="font-bold">Rp</span>
+                        <div className="p-3 rounded-xl bg-green-100 text-green-400 fill-current">
+                            <span className="font-bold">Rp</span>
                         </div>
                     </div>
-                    <div class="card bg-white shadow rounded-lg p-3 md:p-6 transition-all duration-200 relative overflow-hidden flex items-start justify-between">
-                        <div class="flex-1">
-                            <p class="text-sm font-medium text-gray-700 mb-1">
+                    <div className="card bg-white shadow rounded-lg p-3 md:p-6 transition-all duration-200 relative overflow-hidden flex items-start justify-between">
+                        <div className="flex-1">
+                            <p className="text-sm font-medium text-gray-700 mb-1">
                                 Total Orders
                             </p>
-                            <p class="text-3xl font-bold text-gray-800 mb-2">
+                            <p className="text-3xl font-bold text-gray-800 mb-2">
                                 100
                             </p>
-                            <div class="flex items-center gap-2">
-                                <span class="bg-green-100 border border-green-400 rounded-lg px-2 py-0.5 text-xs flex items-center gap-1">
+                            <div className="flex items-center gap-2">
+                                <span className="bg-green-100 border border-green-400 rounded-lg px-2 py-0.5 text-xs flex items-center gap-1">
                                     10%
                                 </span>
                                 <span>from yesterday</span>
                             </div>
                         </div>
-                        <div class="p-3 rounded-xl bg-green-100 text-green-400 fill-current">
+                        <div className="p-3 rounded-xl bg-green-100 text-green-400 fill-current">
                             <svg
                                 width="24"
                                 height="24"
@@ -90,16 +92,16 @@ export default function Dashboard() {
                             </svg>
                         </div>
                     </div>
-                    <div class="card bg-white shadow rounded-lg p-3 md:p-6 transition-all duration-200 relative overflow-hidden flex items-start justify-between">
-                        <div class="flex-1">
-                            <p class="text-sm font-medium text-gray-700 mb-1">
+                    <div className="card bg-white shadow rounded-lg p-3 md:p-6 transition-all duration-200 relative overflow-hidden flex items-start justify-between">
+                        <div className="flex-1">
+                            <p className="text-sm font-medium text-gray-700 mb-1">
                                 Total Products
                             </p>
-                            <p class="text-3xl font-bold text-gray-800 mb-2">
+                            <p className="text-3xl font-bold text-gray-800 mb-2">
                                 25
                             </p>
                         </div>
-                        <div class="p-3 rounded-xl bg-green-100 text-green-400 fill-current">
+                        <div className="p-3 rounded-xl bg-green-100 text-green-400 fill-current">
                             <svg
                                 width="24"
                                 height="24"
@@ -114,74 +116,39 @@ export default function Dashboard() {
                             </svg>
                         </div>
                     </div>
-                    <div class="rounded-lg transition-all duration-200 relative overflow-hidden flex items-start justify-between flex-1 gap-2">
-                        <Link
-                            href="catalog.html"
+                    <div className="rounded-lg transition-all duration-200 relative overflow-hidden flex items-start justify-between flex-1 gap-2">
+                        <Button
+                            href="/catalogue"
                             target="_blank"
-                            class="w-full h-full"
+                            className={'flex items-center w-full h-full cursor-pointer'}
+                            variant={'outline'}
                         >
-                            <button
-                                type="button"
-                                class="flex items-center space-x-2 w-full h-full p-4 border border-blue-500 border-2 text-blue-500 hover:bg-blue-700 hover:text-white rounded-lg transition-colors fill-current cursor-pointer"
-                            >
-                                <svg
-                                    width="24"
-                                    height="24"
-                                    viewBox="0 0 24 24"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                >
-                                    <path
-                                        fill-rule="evenodd"
-                                        clip-rule="evenodd"
-                                        d="M7.25 7.25V7.13012C7.25 4.96238 8.71761 3.06964 10.8171 2.52979C11.5931 2.33024 12.4069 2.33024 13.1829 2.52979C15.2824 3.06964 16.75 4.96238 16.75 7.13013V7.25H18.2511C18.8224 7.25 19.3072 7.66898 19.3901 8.23423L19.6087 9.72668C20.0393 12.6651 20.0393 15.6507 19.6087 18.5891C19.4008 20.0081 18.2565 21.1052 16.83 21.2531L16.2011 21.3183C13.4079 21.608 10.5921 21.608 7.79887 21.3183L7.17 21.2531C5.74346 21.1052 4.59917 20.0081 4.39125 18.5891C3.96071 15.6507 3.96071 12.6651 4.39125 9.72668L4.60993 8.23423C4.69275 7.66898 5.17759 7.25 5.74887 7.25H7.25ZM11.1906 3.98252C11.7216 3.84599 12.2784 3.84599 12.8094 3.98252C14.2458 4.3519 15.25 5.64693 15.25 7.13013V7.25H8.75V7.13012C8.75 5.64693 9.75415 4.3519 11.1906 3.98252ZM7.25 8.75V11C7.25 11.4142 7.58579 11.75 8 11.75C8.41421 11.75 8.75 11.4142 8.75 11V8.75H15.25V11C15.25 11.4142 15.5858 11.75 16 11.75C16.4142 11.75 16.75 11.4142 16.75 11V8.75H17.9496L18.1246 9.94414C18.534 12.7384 18.534 15.5774 18.1246 18.3717C18.0161 19.1118 17.4193 19.684 16.6753 19.7611L16.0464 19.8264C13.356 20.1054 10.644 20.1054 7.95359 19.8264L7.32472 19.7611C6.58068 19.684 5.98385 19.1118 5.87541 18.3717C5.46599 15.5774 5.46599 12.7384 5.87541 9.94414L6.05037 8.75H7.25Z"
-                                    />
-                                </svg>
-                                <span>Open Catalog</span>
-                            </button>
-                        </Link>
-                        <Link
-                            href="/transactions/form"
-                            data-page="form"
-                            class="w-full h-full p-4 bg-blue-500 hover:bg-blue-700 text-white rounded-lg transition-colors fill-current"
+                            <CatalogueIcon/>
+                            <span>Open Catalog</span>
+                        </Button>
+                        <Button 
+                            href={"/transactions/form"}
+                            className={"flex items-center w-full h-full cursor-pointer"}
                         >
-                            <button
-                                type="button"
-                                class="flex items-center space-x-2 w-full h-full cursor-pointer"
-                            >
-                                <svg
-                                    width="24"
-                                    height="24"
-                                    viewBox="0 0 24 24"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                >
-                                    <path d="M13.5 9.75002C13.5 9.3358 13.1642 9.00002 12.75 9.00002H6.75C6.33579 9.00002 6 9.3358 6 9.75002C6 10.1642 6.33579 10.5 6.75 10.5H12.75C13.1642 10.5 13.5 10.1642 13.5 9.75002Z" />
-                                    <path d="M12.5 12.75C12.5 12.3358 12.1642 12 11.75 12H6.75C6.33579 12 6 12.3358 6 12.75C6 13.1642 6.33579 13.5 6.75 13.5H11.75C12.1642 13.5 12.5 13.1642 12.5 12.75Z" />
-                                    <path d="M12.75 15C13.1642 15 13.5 15.3358 13.5 15.75C13.5 16.1642 13.1642 16.5 12.75 16.5H6.75C6.33579 16.5 6 16.1642 6 15.75C6 15.3358 6.33579 15 6.75 15H12.75Z" />
-                                    <path
-                                        fill-rule="evenodd"
-                                        clip-rule="evenodd"
-                                        d="M6 21.75H19C20.5188 21.75 21.75 20.5188 21.75 19V13.5C21.75 13.0858 21.4142 12.75 21 12.75H17.75V4.94321C17.75 3.51981 16.1411 2.69184 14.9828 3.51918L14.8078 3.64421C14.0273 4.2017 12.9701 4.19983 12.1859 3.63972C10.8821 2.70839 9.11794 2.70839 7.81407 3.63972C7.02992 4.19983 5.9727 4.2017 5.19221 3.64421L5.01717 3.51918C3.8589 2.69184 2.25 3.51981 2.25 4.94321V18C2.25 20.0711 3.92893 21.75 6 21.75ZM8.68593 4.86032C9.46825 4.30152 10.5318 4.30152 11.3141 4.86032C12.6161 5.79035 14.3739 5.79745 15.6796 4.86481L15.8547 4.73978C16.0202 4.62159 16.25 4.73987 16.25 4.94321V19C16.25 19.4501 16.3581 19.875 16.5499 20.25H6C4.75736 20.25 3.75 19.2427 3.75 18V4.94321C3.75 4.73987 3.97984 4.62159 4.14531 4.73978L4.32036 4.86481C5.62605 5.79745 7.3839 5.79034 8.68593 4.86032ZM17.75 19V14.25H20.25V19C20.25 19.6904 19.6904 20.25 19 20.25C18.3096 20.25 17.75 19.6904 17.75 19Z"
-                                    />
-                                </svg>
-                                <span>Create Invoice</span>
-                            </button>
-                        </Link>
+                            <InvoicePaperIcon />
+                            <span>Create Invoice</span>
+                        </Button>
                     </div>
                 </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                    <div class="card bg-white shadow rounded-lg p-3 md:p-6 transition-all duration-200 relative overflow-hidden flex items-start justify-between">
-                        <div class="flex-1 flex flex-col">
-                            <div class="mb-6">
-                                <h2 class="font-bold text-gray-700 mb-1">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                    <div className="card bg-white shadow rounded-lg p-3 md:p-6 transition-all duration-200 relative overflow-hidden flex items-start justify-between">
+                        <div className="flex-1 flex flex-col">
+                            <div className="mb-6">
+                                <h2 className="font-bold text-gray-700 mb-1">
                                     Revenue Overview
                                 </h2>
-                                <p class="text-xs text-gray-500">
+                                <p className="text-xs text-gray-500">
                                     January - December 2026
                                 </p>
                             </div>
 
-                            <div class="flex h-64 w-full gap-2 md:gap-4 mt-auto">
-                                <div class="flex flex-col justify-between text-[10px] sm:text-xs text-gray-400 text-right pb-8 font-medium">
+                            <div className="flex h-64 w-full gap-2 md:gap-4 mt-auto">
+                                <div className="flex flex-col justify-between text-[10px] sm:text-xs text-gray-400 text-right pb-8 font-medium">
                                     <span>1.000.000</span>
                                     <span>750.000</span>
                                     <span>500.000</span>
@@ -189,166 +156,166 @@ export default function Dashboard() {
                                     <span>0</span>
                                 </div>
 
-                                <div class="relative flex-1 flex items-end justify-between gap-1 sm:gap-2">
-                                    <div class="absolute inset-0 pb-8 flex flex-col justify-between pointer-events-none z-0">
-                                        <div class="w-full border-t border-gray-200 border-dashed"></div>
-                                        <div class="w-full border-t border-gray-200 border-dashed"></div>
-                                        <div class="w-full border-t border-gray-200 border-dashed"></div>
-                                        <div class="w-full border-t border-gray-200 border-dashed"></div>
-                                        <div class="w-full border-t border-gray-300"></div>
+                                <div className="relative flex-1 flex items-end justify-between gap-1 sm:gap-2">
+                                    <div className="absolute inset-0 pb-8 flex flex-col justify-between pointer-events-none z-0">
+                                        <div className="w-full border-t border-gray-200 border-dashed"></div>
+                                        <div className="w-full border-t border-gray-200 border-dashed"></div>
+                                        <div className="w-full border-t border-gray-200 border-dashed"></div>
+                                        <div className="w-full border-t border-gray-200 border-dashed"></div>
+                                        <div className="w-full border-t border-gray-300"></div>
                                     </div>
 
-                                    <div class="relative flex flex-col items-center justify-end flex-1 h-full z-10">
-                                        <div class="w-full sm:w-3/4 bg-blue-500 hover:bg-blue-600 rounded-t-sm md:rounded-t-md transition-all h-[30%] relative group cursor-pointer">
-                                            <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 opacity-0 group-hover:opacity-100 bg-gray-800 text-white text-[10px] sm:text-xs py-1 px-2 rounded pointer-events-none transition-opacity z-20 whitespace-nowrap">
+                                    <div className="relative flex flex-col items-center justify-end flex-1 h-full z-10">
+                                        <div className="w-full sm:w-3/4 bg-blue-500 hover:bg-blue-600 rounded-t-sm md:rounded-t-md transition-all h-[30%] relative group cursor-pointer">
+                                            <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 opacity-0 group-hover:opacity-100 bg-gray-800 text-white text-[10px] sm:text-xs py-1 px-2 rounded pointer-events-none transition-opacity z-20 whitespace-nowrap">
                                                 Rp 300.000
                                             </div>
                                         </div>
-                                        <div class="h-8 flex items-end justify-center w-full">
-                                            <span class="text-[10px] sm:text-xs text-gray-500">
+                                        <div className="h-8 flex items-end justify-center w-full">
+                                            <span className="text-[10px] sm:text-xs text-gray-500">
                                                 Jan
                                             </span>
                                         </div>
                                     </div>
 
-                                    <div class="relative flex flex-col items-center justify-end flex-1 h-full z-10">
-                                        <div class="w-full sm:w-3/4 bg-blue-500 hover:bg-blue-600 rounded-t-sm md:rounded-t-md transition-all h-[45%] relative group cursor-pointer">
-                                            <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 opacity-0 group-hover:opacity-100 bg-gray-800 text-white text-[10px] sm:text-xs py-1 px-2 rounded pointer-events-none transition-opacity z-20 whitespace-nowrap">
+                                    <div className="relative flex flex-col items-center justify-end flex-1 h-full z-10">
+                                        <div className="w-full sm:w-3/4 bg-blue-500 hover:bg-blue-600 rounded-t-sm md:rounded-t-md transition-all h-[45%] relative group cursor-pointer">
+                                            <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 opacity-0 group-hover:opacity-100 bg-gray-800 text-white text-[10px] sm:text-xs py-1 px-2 rounded pointer-events-none transition-opacity z-20 whitespace-nowrap">
                                                 Rp 450.000
                                             </div>
                                         </div>
-                                        <div class="h-8 flex items-end justify-center w-full">
-                                            <span class="text-[10px] sm:text-xs text-gray-500">
+                                        <div className="h-8 flex items-end justify-center w-full">
+                                            <span className="text-[10px] sm:text-xs text-gray-500">
                                                 Feb
                                             </span>
                                         </div>
                                     </div>
 
-                                    <div class="relative flex flex-col items-center justify-end flex-1 h-full z-10">
-                                        <div class="w-full sm:w-3/4 bg-blue-500 hover:bg-blue-600 rounded-t-sm md:rounded-t-md transition-all h-[35%] relative group cursor-pointer">
-                                            <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 opacity-0 group-hover:opacity-100 bg-gray-800 text-white text-[10px] sm:text-xs py-1 px-2 rounded pointer-events-none transition-opacity z-20 whitespace-nowrap">
+                                    <div className="relative flex flex-col items-center justify-end flex-1 h-full z-10">
+                                        <div className="w-full sm:w-3/4 bg-blue-500 hover:bg-blue-600 rounded-t-sm md:rounded-t-md transition-all h-[35%] relative group cursor-pointer">
+                                            <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 opacity-0 group-hover:opacity-100 bg-gray-800 text-white text-[10px] sm:text-xs py-1 px-2 rounded pointer-events-none transition-opacity z-20 whitespace-nowrap">
                                                 Rp 350.000
                                             </div>
                                         </div>
-                                        <div class="h-8 flex items-end justify-center w-full">
-                                            <span class="text-[10px] sm:text-xs text-gray-500">
+                                        <div className="h-8 flex items-end justify-center w-full">
+                                            <span className="text-[10px] sm:text-xs text-gray-500">
                                                 Mar
                                             </span>
                                         </div>
                                     </div>
 
-                                    <div class="relative flex flex-col items-center justify-end flex-1 h-full z-10">
-                                        <div class="w-full sm:w-3/4 bg-blue-500 hover:bg-blue-600 rounded-t-sm md:rounded-t-md transition-all h-[50%] relative group cursor-pointer">
-                                            <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 opacity-0 group-hover:opacity-100 bg-gray-800 text-white text-[10px] sm:text-xs py-1 px-2 rounded pointer-events-none transition-opacity z-20 whitespace-nowrap">
+                                    <div className="relative flex flex-col items-center justify-end flex-1 h-full z-10">
+                                        <div className="w-full sm:w-3/4 bg-blue-500 hover:bg-blue-600 rounded-t-sm md:rounded-t-md transition-all h-[50%] relative group cursor-pointer">
+                                            <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 opacity-0 group-hover:opacity-100 bg-gray-800 text-white text-[10px] sm:text-xs py-1 px-2 rounded pointer-events-none transition-opacity z-20 whitespace-nowrap">
                                                 Rp 500.000
                                             </div>
                                         </div>
-                                        <div class="h-8 flex items-end justify-center w-full">
-                                            <span class="text-[10px] sm:text-xs text-gray-500">
+                                        <div className="h-8 flex items-end justify-center w-full">
+                                            <span className="text-[10px] sm:text-xs text-gray-500">
                                                 Apr
                                             </span>
                                         </div>
                                     </div>
 
-                                    <div class="relative flex flex-col items-center justify-end flex-1 h-full z-10">
-                                        <div class="w-full sm:w-3/4 bg-blue-500 hover:bg-blue-600 rounded-t-sm md:rounded-t-md transition-all h-[40%] relative group cursor-pointer">
-                                            <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 opacity-0 group-hover:opacity-100 bg-gray-800 text-white text-[10px] sm:text-xs py-1 px-2 rounded pointer-events-none transition-opacity z-20 whitespace-nowrap">
+                                    <div className="relative flex flex-col items-center justify-end flex-1 h-full z-10">
+                                        <div className="w-full sm:w-3/4 bg-blue-500 hover:bg-blue-600 rounded-t-sm md:rounded-t-md transition-all h-[40%] relative group cursor-pointer">
+                                            <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 opacity-0 group-hover:opacity-100 bg-gray-800 text-white text-[10px] sm:text-xs py-1 px-2 rounded pointer-events-none transition-opacity z-20 whitespace-nowrap">
                                                 Rp 400.000
                                             </div>
                                         </div>
-                                        <div class="h-8 flex items-end justify-center w-full">
-                                            <span class="text-[10px] sm:text-xs text-gray-500">
+                                        <div className="h-8 flex items-end justify-center w-full">
+                                            <span className="text-[10px] sm:text-xs text-gray-500">
                                                 May
                                             </span>
                                         </div>
                                     </div>
 
-                                    <div class="relative flex flex-col items-center justify-end flex-1 h-full z-10">
-                                        <div class="w-full sm:w-3/4 bg-blue-500 hover:bg-blue-600 rounded-t-sm md:rounded-t-md transition-all h-[65%] relative group cursor-pointer">
-                                            <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 opacity-0 group-hover:opacity-100 bg-gray-800 text-white text-[10px] sm:text-xs py-1 px-2 rounded pointer-events-none transition-opacity z-20 whitespace-nowrap">
+                                    <div className="relative flex flex-col items-center justify-end flex-1 h-full z-10">
+                                        <div className="w-full sm:w-3/4 bg-blue-500 hover:bg-blue-600 rounded-t-sm md:rounded-t-md transition-all h-[65%] relative group cursor-pointer">
+                                            <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 opacity-0 group-hover:opacity-100 bg-gray-800 text-white text-[10px] sm:text-xs py-1 px-2 rounded pointer-events-none transition-opacity z-20 whitespace-nowrap">
                                                 Rp 650.000
                                             </div>
                                         </div>
-                                        <div class="h-8 flex items-end justify-center w-full">
-                                            <span class="text-[10px] sm:text-xs text-gray-500">
+                                        <div className="h-8 flex items-end justify-center w-full">
+                                            <span className="text-[10px] sm:text-xs text-gray-500">
                                                 Jun
                                             </span>
                                         </div>
                                     </div>
 
-                                    <div class="relative flex flex-col items-center justify-end flex-1 h-full z-10">
-                                        <div class="w-full sm:w-3/4 bg-blue-500 hover:bg-blue-600 rounded-t-sm md:rounded-t-md transition-all h-[60%] relative group cursor-pointer">
-                                            <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 opacity-0 group-hover:opacity-100 bg-gray-800 text-white text-[10px] sm:text-xs py-1 px-2 rounded pointer-events-none transition-opacity z-20 whitespace-nowrap">
+                                    <div className="relative flex flex-col items-center justify-end flex-1 h-full z-10">
+                                        <div className="w-full sm:w-3/4 bg-blue-500 hover:bg-blue-600 rounded-t-sm md:rounded-t-md transition-all h-[60%] relative group cursor-pointer">
+                                            <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 opacity-0 group-hover:opacity-100 bg-gray-800 text-white text-[10px] sm:text-xs py-1 px-2 rounded pointer-events-none transition-opacity z-20 whitespace-nowrap">
                                                 Rp 600.000
                                             </div>
                                         </div>
-                                        <div class="h-8 flex items-end justify-center w-full">
-                                            <span class="text-[10px] sm:text-xs text-gray-500">
+                                        <div className="h-8 flex items-end justify-center w-full">
+                                            <span className="text-[10px] sm:text-xs text-gray-500">
                                                 Jul
                                             </span>
                                         </div>
                                     </div>
 
-                                    <div class="relative flex flex-col items-center justify-end flex-1 h-full z-10">
-                                        <div class="w-full sm:w-3/4 bg-blue-500 hover:bg-blue-600 rounded-t-sm md:rounded-t-md transition-all h-[80%] relative group cursor-pointer">
-                                            <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 opacity-0 group-hover:opacity-100 bg-gray-800 text-white text-[10px] sm:text-xs py-1 px-2 rounded pointer-events-none transition-opacity z-20 whitespace-nowrap">
+                                    <div className="relative flex flex-col items-center justify-end flex-1 h-full z-10">
+                                        <div className="w-full sm:w-3/4 bg-blue-500 hover:bg-blue-600 rounded-t-sm md:rounded-t-md transition-all h-[80%] relative group cursor-pointer">
+                                            <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 opacity-0 group-hover:opacity-100 bg-gray-800 text-white text-[10px] sm:text-xs py-1 px-2 rounded pointer-events-none transition-opacity z-20 whitespace-nowrap">
                                                 Rp 800.000
                                             </div>
                                         </div>
-                                        <div class="h-8 flex items-end justify-center w-full">
-                                            <span class="text-[10px] sm:text-xs text-gray-500">
+                                        <div className="h-8 flex items-end justify-center w-full">
+                                            <span className="text-[10px] sm:text-xs text-gray-500">
                                                 Aug
                                             </span>
                                         </div>
                                     </div>
 
-                                    <div class="relative flex flex-col items-center justify-end flex-1 h-full z-10">
-                                        <div class="w-full sm:w-3/4 bg-blue-500 hover:bg-blue-600 rounded-t-sm md:rounded-t-md transition-all h-[70%] relative group cursor-pointer">
-                                            <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 opacity-0 group-hover:opacity-100 bg-gray-800 text-white text-[10px] sm:text-xs py-1 px-2 rounded pointer-events-none transition-opacity z-20 whitespace-nowrap">
+                                    <div className="relative flex flex-col items-center justify-end flex-1 h-full z-10">
+                                        <div className="w-full sm:w-3/4 bg-blue-500 hover:bg-blue-600 rounded-t-sm md:rounded-t-md transition-all h-[70%] relative group cursor-pointer">
+                                            <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 opacity-0 group-hover:opacity-100 bg-gray-800 text-white text-[10px] sm:text-xs py-1 px-2 rounded pointer-events-none transition-opacity z-20 whitespace-nowrap">
                                                 Rp 700.000
                                             </div>
                                         </div>
-                                        <div class="h-8 flex items-end justify-center w-full">
-                                            <span class="text-[10px] sm:text-xs text-gray-500">
+                                        <div className="h-8 flex items-end justify-center w-full">
+                                            <span className="text-[10px] sm:text-xs text-gray-500">
                                                 Sep
                                             </span>
                                         </div>
                                     </div>
 
-                                    <div class="relative flex flex-col items-center justify-end flex-1 h-full z-10">
-                                        <div class="w-full sm:w-3/4 bg-blue-500 hover:bg-blue-600 rounded-t-sm md:rounded-t-md transition-all h-[90%] relative group cursor-pointer">
-                                            <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 opacity-0 group-hover:opacity-100 bg-gray-800 text-white text-[10px] sm:text-xs py-1 px-2 rounded pointer-events-none transition-opacity z-20 whitespace-nowrap">
+                                    <div className="relative flex flex-col items-center justify-end flex-1 h-full z-10">
+                                        <div className="w-full sm:w-3/4 bg-blue-500 hover:bg-blue-600 rounded-t-sm md:rounded-t-md transition-all h-[90%] relative group cursor-pointer">
+                                            <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 opacity-0 group-hover:opacity-100 bg-gray-800 text-white text-[10px] sm:text-xs py-1 px-2 rounded pointer-events-none transition-opacity z-20 whitespace-nowrap">
                                                 Rp 900.000
                                             </div>
                                         </div>
-                                        <div class="h-8 flex items-end justify-center w-full">
-                                            <span class="text-[10px] sm:text-xs text-gray-500">
+                                        <div className="h-8 flex items-end justify-center w-full">
+                                            <span className="text-[10px] sm:text-xs text-gray-500">
                                                 Oct
                                             </span>
                                         </div>
                                     </div>
 
-                                    <div class="relative flex flex-col items-center justify-end flex-1 h-full z-10">
-                                        <div class="w-full sm:w-3/4 bg-blue-500 hover:bg-blue-600 rounded-t-sm md:rounded-t-md transition-all h-[85%] relative group cursor-pointer">
-                                            <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 opacity-0 group-hover:opacity-100 bg-gray-800 text-white text-[10px] sm:text-xs py-1 px-2 rounded pointer-events-none transition-opacity z-20 whitespace-nowrap">
+                                    <div className="relative flex flex-col items-center justify-end flex-1 h-full z-10">
+                                        <div className="w-full sm:w-3/4 bg-blue-500 hover:bg-blue-600 rounded-t-sm md:rounded-t-md transition-all h-[85%] relative group cursor-pointer">
+                                            <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 opacity-0 group-hover:opacity-100 bg-gray-800 text-white text-[10px] sm:text-xs py-1 px-2 rounded pointer-events-none transition-opacity z-20 whitespace-nowrap">
                                                 Rp 850.000
                                             </div>
                                         </div>
-                                        <div class="h-8 flex items-end justify-center w-full">
-                                            <span class="text-[10px] sm:text-xs text-gray-500">
+                                        <div className="h-8 flex items-end justify-center w-full">
+                                            <span className="text-[10px] sm:text-xs text-gray-500">
                                                 Nov
                                             </span>
                                         </div>
                                     </div>
 
-                                    <div class="relative flex flex-col items-center justify-end flex-1 h-full z-10">
-                                        <div class="w-full sm:w-3/4 bg-blue-500 hover:bg-blue-600 rounded-t-sm md:rounded-t-md transition-all h-[100%] relative group cursor-pointer">
-                                            <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 opacity-0 group-hover:opacity-100 bg-gray-800 text-white text-[10px] sm:text-xs py-1 px-2 rounded pointer-events-none transition-opacity z-20 whitespace-nowrap">
+                                    <div className="relative flex flex-col items-center justify-end flex-1 h-full z-10">
+                                        <div className="w-full sm:w-3/4 bg-blue-500 hover:bg-blue-600 rounded-t-sm md:rounded-t-md transition-all h-[100%] relative group cursor-pointer">
+                                            <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 opacity-0 group-hover:opacity-100 bg-gray-800 text-white text-[10px] sm:text-xs py-1 px-2 rounded pointer-events-none transition-opacity z-20 whitespace-nowrap">
                                                 Rp 1.000.000
                                             </div>
                                         </div>
-                                        <div class="h-8 flex items-end justify-center w-full">
-                                            <span class="text-[10px] sm:text-xs text-gray-500">
+                                        <div className="h-8 flex items-end justify-center w-full">
+                                            <span className="text-[10px] sm:text-xs text-gray-500">
                                                 Dec
                                             </span>
                                         </div>
@@ -357,56 +324,56 @@ export default function Dashboard() {
                             </div>
                         </div>
                     </div>
-                    <div class="card bg-white shadow rounded-lg p-3 md:p-6 transition-all duration-200 relative overflow-hidden flex items-start justify-between">
-                        <div class="flex-1">
-                            <h2 class="font-bold text-gray-700 mb-1">
+                    <div className="card bg-white shadow rounded-lg p-3 md:p-6 transition-all duration-200 relative overflow-hidden flex items-start justify-between">
+                        <div className="flex-1">
+                            <h2 className="font-bold text-gray-700 mb-1">
                                 Recent Transactions
                             </h2>
-                            <div class="flex-1 space-y-4">
-                                <div class="flex items-center justify-between py-3 border-b border-gray-400 last:border-0">
-                                    <div class="flex-1">
-                                        <p class="font-medium text-gray-700">
+                            <div className="flex-1 space-y-4">
+                                <div className="flex items-center justify-between py-3 border-b border-gray-400 last:border-0">
+                                    <div className="flex-1">
+                                        <p className="font-medium text-gray-700">
                                             John Doe
                                         </p>
-                                        <p class="text-sm text-gray-600">
+                                        <p className="text-sm text-gray-600">
                                             Anime A5 Sticker
                                         </p>
                                     </div>
-                                    <div class="text-right">
-                                        <p class="font-medium">Rp20.000</p>
-                                        <span class="bg-green-100 px-2 py-0.5 text-xs rounded-lg">
+                                    <div className="text-right">
+                                        <p className="font-medium">Rp20.000</p>
+                                        <span className="bg-green-100 px-2 py-0.5 text-xs rounded-lg">
                                             Completed
                                         </span>
                                     </div>
                                 </div>
-                                <div class="flex items-center justify-between py-3 border-b border-gray-400 last:border-0">
-                                    <div class="flex-1">
-                                        <p class="font-medium text-gray-700">
+                                <div className="flex items-center justify-between py-3 border-b border-gray-400 last:border-0">
+                                    <div className="flex-1">
+                                        <p className="font-medium text-gray-700">
                                             Jane Doe
                                         </p>
-                                        <p class="text-sm text-gray-600">
+                                        <p className="text-sm text-gray-600">
                                             Keychain
                                         </p>
                                     </div>
-                                    <div class="text-right">
-                                        <p class="font-medium">Rp15.000</p>
-                                        <span class="bg-green-100 px-2 py-0.5 text-xs rounded-lg">
+                                    <div className="text-right">
+                                        <p className="font-medium">Rp15.000</p>
+                                        <span className="bg-green-100 px-2 py-0.5 text-xs rounded-lg">
                                             Completed
                                         </span>
                                     </div>
                                 </div>
-                                <div class="flex items-center justify-between py-3 border-b border-gray-400 last:border-0">
-                                    <div class="flex-1">
-                                        <p class="font-medium text-gray-700">
+                                <div className="flex items-center justify-between py-3 border-b border-gray-400 last:border-0">
+                                    <div className="flex-1">
+                                        <p className="font-medium text-gray-700">
                                             Sam Baldman
                                         </p>
-                                        <p class="text-sm text-gray-600">
+                                        <p className="text-sm text-gray-600">
                                             Anime Poster
                                         </p>
                                     </div>
-                                    <div class="text-right">
-                                        <p class="font-medium">Rp40.000</p>
-                                        <span class="bg-yellow-100 px-2 py-0.5 text-xs rounded-lg">
+                                    <div className="text-right">
+                                        <p className="font-medium">Rp40.000</p>
+                                        <span className="bg-yellow-100 px-2 py-0.5 text-xs rounded-lg">
                                             Preorder
                                         </span>
                                     </div>

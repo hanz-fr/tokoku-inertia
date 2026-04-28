@@ -10,3 +10,4 @@ Route::get('/payment', fn() => Inertia::render('Payment'));
 Route::get('/products', fn() => Inertia::render('Products'));
 Route::get('/booth', fn() => Inertia::render('Booth'));
 Route::get('/transactions/form', fn() => Inertia::render('TransactionsForm'));
+Route::get('/login', fn() => Inertia::render('Login'));

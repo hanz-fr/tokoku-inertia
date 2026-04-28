@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { Link, Head } from '@inertiajs/react'
 import DashboardLayout from './DashboardLayout'
+import { CancelIcon, SaveIcon } from '../Components/Icons'
+import Button from '../Components/Buttons'
 
 export default function Booth() {
     const [saveOpen, setSaveOpen] = useState(false)
@@ -133,27 +135,14 @@ export default function Booth() {
                         </div>
 
                         <div className="bg-white p-6 rounded-lg shadow space-y-3">
-                            <button
-                                type="button"
-                                onClick={() => setSaveOpen(true)}
-                                className="flex items-center justify-center gap-2 w-full p-2 bg-blue-500 hover:bg-blue-700 text-white rounded-lg transition-colors fill-current"
-                            >
-                                <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path fillRule="evenodd" clipRule="evenodd" d="M3.48911 6.2367C3.65493 4.81893 4.85617 3.75 6.28361 3.75H17.0263C17.2084 3.75 17.3843 3.81626 17.5211 3.93641L20.2816 6.3602C20.9022 6.90511 21.245 7.70008 21.2154 8.52543L20.8714 18.0988C20.8182 19.5781 19.6035 20.75 18.1232 20.75H6.11291C4.78329 20.75 3.66076 19.762 3.49191 18.4432C2.99542 14.565 2.97403 10.6407 3.42822 6.75728L3.48911 6.2367ZM6.28361 5.25C5.61719 5.25 5.05637 5.74905 4.97895 6.41096L4.91807 6.93153C4.47805 10.6937 4.49877 14.4955 4.97977 18.2527C5.05277 18.8229 5.53807 19.25 6.11291 19.25H6.75V15C6.75 14.0335 7.5335 13.25 8.5 13.25H15.5C16.4665 13.25 17.25 14.0335 17.25 15V19.25H18.1232C18.7961 19.25 19.3482 18.7173 19.3724 18.0449L19.7164 8.47157C19.7298 8.09641 19.574 7.73505 19.2919 7.48737L16.75 5.2555V7.59998C16.75 8.56647 15.9665 9.34998 15 9.34998H9C8.0335 9.34998 7.25 8.56647 7.25 7.59998V5.25H6.28361ZM8.75 5.25V7.59998C8.75 7.73805 8.86193 7.84998 9 7.84998H15C15.1381 7.84998 15.25 7.73805 15.25 7.59998V5.25H8.75ZM15.75 19.25H8.25V15C8.25 14.8619 8.36193 14.75 8.5 14.75H15.5C15.6381 14.75 15.75 14.8619 15.75 15V19.25Z" />
-                                </svg>
+                            <Button size={'sm'} onClick={() => setSaveOpen(true)}>
+                                <SaveIcon/>
                                 <span>Save Profile</span>
-                            </button>
-                            <button
-                                type="button"
-                                onClick={() => setCancelOpen(true)}
-                                className="flex items-center justify-center gap-2 w-full p-2 border-2 border-blue-500 text-blue-500 hover:bg-blue-700 hover:text-white rounded-lg transition-colors fill-current"
-                            >
-                                <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M8.46967 8.46966C8.76256 8.17677 9.23744 8.17677 9.53033 8.46966L12 10.9393L14.4697 8.46967C14.7626 8.17678 15.2374 8.17678 15.5303 8.46967C15.8232 8.76256 15.8232 9.23744 15.5303 9.53033L13.0607 12L15.5303 14.4697C15.8232 14.7626 15.8232 15.2374 15.5303 15.5303C15.2374 15.8232 14.7626 15.8232 14.4697 15.5303L12 13.0607L9.53034 15.5303C9.23744 15.8232 8.76257 15.8232 8.46968 15.5303C8.17678 15.2374 8.17678 14.7626 8.46968 14.4697L10.9393 12L8.46967 9.53032C8.17678 9.23743 8.17678 8.76255 8.46967 8.46966Z" />
-                                    <path fillRule="evenodd" clipRule="evenodd" d="M7.31673 3.76876C10.4043 3.42368 13.5957 3.42368 16.6832 3.76876C18.5096 3.97288 19.9845 5.41153 20.1994 7.24849C20.5686 10.4054 20.5686 13.5946 20.1994 16.7515C19.9845 18.5885 18.5096 20.0271 16.6832 20.2313C13.5957 20.5763 10.4043 20.5763 7.31673 20.2313C5.49035 20.0271 4.01545 18.5885 3.8006 16.7515C3.43137 13.5946 3.43137 10.4054 3.8006 7.24849C4.01545 5.41153 5.49035 3.97288 7.31673 3.76876ZM16.5166 5.25948C13.5398 4.92677 10.4602 4.92677 7.48334 5.25948C6.33891 5.38738 5.42286 6.29063 5.29045 7.42274C4.93476 10.4639 4.93476 13.5361 5.29045 16.5773C5.42286 17.7094 6.33891 18.6126 7.48334 18.7405C10.4602 19.0732 13.5398 19.0732 16.5166 18.7405C17.6611 18.6126 18.5771 17.7094 18.7095 16.5773C19.0652 13.5361 19.0652 10.4639 18.7095 7.42274C18.5771 6.29063 17.6611 5.38738 16.5166 5.25948Z" />
-                                </svg>
+                            </Button>
+                            <Button size={'sm'} variant={'outline'}>
+                                <CancelIcon/>
                                 <span>Cancel</span>
-                            </button>
+                            </Button>
                         </div>
                     </div>
                 </div>
@@ -166,18 +155,12 @@ export default function Booth() {
                         <h3 className="text-lg font-semibold text-gray-800">Save Booth Profile?</h3>
                         <p className="text-sm text-gray-500">You can always change this later.</p>
                         <div className="flex flex-row-reverse gap-3 mt-4">
-                            <button
-                                onClick={handleSave}
-                                className="flex-1 px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-md text-sm font-semibold"
-                            >
+                            <Button size={'sm'} onClick={handleSave}>
                                 Save
-                            </button>
-                            <button
-                                onClick={() => setSaveOpen(false)}
-                                className="flex-1 px-4 py-2 border-2 border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white rounded-md text-sm font-semibold"
-                            >
+                            </Button>
+                            <Button size={'sm'} variant={'outline'} onClick={() => setSaveOpen(false)}>
                                 Cancel
-                            </button>
+                            </Button>
                         </div>
                     </div>
                 </div>

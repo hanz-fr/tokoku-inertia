@@ -1,16 +1,17 @@
 import React from "react";
 import { Link, Head } from "@inertiajs/react";
 import DashboardLayout from "./DashboardLayout";
+import Button from "../Components/Buttons";
 
 export default function Transactions() {
     return (
         <DashboardLayout>
             <Head title="Transactions"/>
-            <div class="p-4 lg:p-6 min-h-screen w-full">
-                <nav class="flex items-center space-x-2 text-sm mb-6">
+            <div className="p-4 lg:p-6 min-h-screen w-full">
+                <nav className="flex items-center space-x-2 text-sm mb-6">
                     <a
                         onclick="parent.postMessage({ 'type': 'dashboard' }, '*')"
-                        class="flex items-center text-gray-700 hover:text-blue-500 fill-current"
+                        className="flex items-center text-gray-700 hover:text-blue-500 fill-current"
                     >
                         <svg
                             width="24"
@@ -39,284 +40,281 @@ export default function Transactions() {
                     </svg>
                     <a
                         href=""
-                        class="flex items-center text-gray-700 hover:text-blue-500"
+                        className="flex items-center text-gray-700 hover:text-blue-500"
                     >
                         Transactions
                     </a>
                 </nav>
 
-                <div class="bg-white rounded-lg p-4 md:p-6 mb-6 flex flex-col md:flex-row md:items-center gap-4">
-                    <h1 class="text-xl md:text-3xl font-bold text-gray-800 flex-1">
+                <div className="bg-white rounded-lg p-4 md:p-6 mb-6 flex flex-col md:flex-row md:items-center gap-4">
+                    <h1 className="text-xl md:text-3xl font-bold text-gray-800 flex-1">
                         Transactions
                     </h1>
-                    <div class="flex flex-col sm:flex-row gap-2 md:ml-auto">
-                        <button
-                            onclick="parent.postMessage({ 'type': 'page', 'to': 'transactions-table' }, '*')"
-                            class="flex flex-1 w-full items-center justify-center space-x-2 bg-blue-500 hover:bg-blue-700 text-white px-4 md:px-6 py-2 rounded-lg transition-colors font-medium cursor-pointer"
-                        >
+                    <div className="flex flex-col sm:flex-row gap-2 md:ml-auto">
+                        <Button>
                             <span>See all transactions</span>
-                        </button>
+                        </Button>
                     </div>
                 </div>
 
                 <div
                     id="calendar-container"
-                    class="bg-[url('../img/calendar-grid-3.png')] rounded-lg border-[4px] border-[#00000050] border-double"
+                    className="bg-[url('../img/calendar-grid-3.png')] rounded-lg border-[4px] border-[#00000050] border-double"
                 >
-                    <div class="flex items-center gap-4 py-1">
-                        <div class="w-full h-[18px] bg-[url('../img/calendar-decor.png')] opacity-50"></div>
-                        <p class="underline decoration-[#ee3d00] decoration-[1.5px] decoration-wavy text-center text-3xl font-semibold text-shadow-[0_2px_4px_white,0_-2px_4px_white]">
+                    <div className="flex items-center gap-4 py-1">
+                        <div className="w-full h-[18px] bg-[url('../img/calendar-decor.png')] opacity-50"></div>
+                        <p className="underline decoration-[#ee3d00] decoration-[1.5px] decoration-wavy text-center text-3xl font-semibold text-shadow-[0_2px_4px_white,0_-2px_4px_white]">
                             2024
                         </p>
-                        <div class="w-full h-[18px] bg-[url('../img/calendar-decor.png')] opacity-50"></div>
+                        <div className="w-full h-[18px] bg-[url('../img/calendar-decor.png')] opacity-50"></div>
                     </div>
-                    <div class="grid md:grid-cols-4 lg:grid-cols-6 place-items-end [&>div]:odd:bg-[#ffffff90] [&>div]:odd:backdrop-contrast-[1.75] [&>.month-card]:hover:shadow-[0_2px_8px_4px_#00000020] [&>.month-card]:hover:translate-y-[-2px] [&>.month-card]:hover:backdrop-contrast-[5] [&>.month-card]:cursor-pointer [&>div]:transition-shadow [&>div]:transition-transform ">
-                        <div class="max-lg:hidden"></div>
-                        <div class="max-lg:hidden"></div>
-                        <div class=""></div>
-                        <div class="month-card w-full h-[150px] p-3 flex flex-col bg-white border-[1px] border-[#00000050]">
-                            <p class="font-[Fredoka] text-xl">October</p>
-                            <p class="h-full text-base text-[#000000B2]">
+                    <div className="grid md:grid-cols-4 lg:grid-cols-6 place-items-end [&>div]:odd:bg-[#ffffff90] [&>div]:odd:backdrop-contrast-[1.75] [&>.month-card]:hover:shadow-[0_2px_8px_4px_#00000020] [&>.month-card]:hover:translate-y-[-2px] [&>.month-card]:hover:backdrop-contrast-[5] [&>.month-card]:cursor-pointer [&>div]:transition-shadow [&>div]:transition-transform ">
+                        <div className="max-lg:hidden"></div>
+                        <div className="max-lg:hidden"></div>
+                        <div className=""></div>
+                        <div className="month-card w-full h-[150px] p-3 flex flex-col bg-white border-[1px] border-[#00000050]">
+                            <p className="font-[Fredoka] text-xl">October</p>
+                            <p className="h-full text-base text-[#000000B2]">
                                 2025
                             </p>
 
-                            <p class="text-[#2F855A] text-lg font-bold">
+                            <p className="text-[#2F855A] text-lg font-bold">
                                 + Rp 325.500
                             </p>
-                            <p class="text-[#00000085] text-sm font-medium">
+                            <p className="text-[#00000085] text-sm font-medium">
                                 21 Transactions
                             </p>
                         </div>
-                        <div class="month-card w-full h-[150px] p-3 flex flex-col bg-white border-t-[1px] border-r-[1px] border-b-[1px] border-[#00000050] !bg-[#ffa8f44f] backdrop-sepia-50 backdrop-contrast[1.5]">
-                            <p class="font-[Fredoka] text-xl">November</p>
-                            <p class="h-full text-base text-[#000000B2]">
+                        <div className="month-card w-full h-[150px] p-3 flex flex-col bg-white border-t-[1px] border-r-[1px] border-b-[1px] border-[#00000050] !bg-[#ffa8f44f] backdrop-sepia-50 backdrop-contrast[1.5]">
+                            <p className="font-[Fredoka] text-xl">November</p>
+                            <p className="h-full text-base text-[#000000B2]">
                                 2025
                             </p>
 
-                            <p class="text-[#000000c0] text-sm font-bold">
+                            <p className="text-[#000000c0] text-sm font-bold">
                                 No Transactions
                             </p>
                         </div>
-                        <div class="month-card w-full h-[150px] p-3 flex flex-col bg-white border-t-[1px] border-r-[1px] border-b-[1px] border-[#00000050]">
-                            <p class="font-[Fredoka] text-xl">December</p>
-                            <p class="h-full text-base text-[#000000B2]">
+                        <div className="month-card w-full h-[150px] p-3 flex flex-col bg-white border-t-[1px] border-r-[1px] border-b-[1px] border-[#00000050]">
+                            <p className="font-[Fredoka] text-xl">December</p>
+                            <p className="h-full text-base text-[#000000B2]">
                                 2025
                             </p>
 
-                            <p class="text-[#2F855A] text-lg font-bold">
+                            <p className="text-[#2F855A] text-lg font-bold">
                                 + Rp 325.500
                             </p>
-                            <p class="text-[#00000085] text-sm font-medium">
+                            <p className="text-[#00000085] text-sm font-medium">
                                 21 Transactions
                             </p>
                         </div>
                     </div>
 
-                    <div class="flex items-center gap-4 py-1">
-                        <div class="w-full h-[18px] bg-[url('../img/calendar-decor.png')] opacity-50"></div>
-                        <p class="underline decoration-[green] decoration-[1.5px] decoration-wavy text-center text-3xl font-semibold text-shadow-[0_2px_4px_white,0_-2px_4px_white]">
+                    <div className="flex items-center gap-4 py-1">
+                        <div className="w-full h-[18px] bg-[url('../img/calendar-decor.png')] opacity-50"></div>
+                        <p className="underline decoration-[green] decoration-[1.5px] decoration-wavy text-center text-3xl font-semibold text-shadow-[0_2px_4px_white,0_-2px_4px_white]">
                             2025
                         </p>
-                        <div class="w-full h-[18px] bg-[url('../img/calendar-decor.png')] opacity-50"></div>
+                        <div className="w-full h-[18px] bg-[url('../img/calendar-decor.png')] opacity-50"></div>
                     </div>
-                    <div class="grid md:grid-cols-4 lg:grid-cols-6 border-l-1 border-t-1 border-[#00000050] [&>div]:odd:bg-[#ffffff90] [&>div]:odd:backdrop-contrast-[1.75] [&>div]:even:bg-[#ffffff50] [&>div]:even:backdrop-sepia-100 [&>div]:hover:shadow-[0_2px_8px_4px_#00000020,0_1px_0px_0px_#00000080_inset] [&>div]:hover:translate-y-[-2px] [&>div]:hover:backdrop-contrast-[5] [&>.month-card]:cursor-pointer [&>div]:transition-shadow [&>div]:transition-transform ">
-                        <div class="month-card w-full h-[150px] p-3 flex flex-col  border-r-[1px] border-b-[1px] border-[#00000050]">
-                            <p class="font-[Fredoka] text-xl">January</p>
-                            <p class="h-full text-base text-[#000000B2]">
+                    <div className="grid md:grid-cols-4 lg:grid-cols-6 border-l-1 border-t-1 border-[#00000050] [&>div]:odd:bg-[#ffffff90] [&>div]:odd:backdrop-contrast-[1.75] [&>div]:even:bg-[#ffffff50] [&>div]:even:backdrop-sepia-100 [&>div]:hover:shadow-[0_2px_8px_4px_#00000020,0_1px_0px_0px_#00000080_inset] [&>div]:hover:translate-y-[-2px] [&>div]:hover:backdrop-contrast-[5] [&>.month-card]:cursor-pointer [&>div]:transition-shadow [&>div]:transition-transform ">
+                        <div className="month-card w-full h-[150px] p-3 flex flex-col  border-r-[1px] border-b-[1px] border-[#00000050]">
+                            <p className="font-[Fredoka] text-xl">January</p>
+                            <p className="h-full text-base text-[#000000B2]">
                                 2025
                             </p>
 
-                            <p class="text-[#2F855A] text-lg font-bold">
+                            <p className="text-[#2F855A] text-lg font-bold">
                                 + Rp 325.500
                             </p>
-                            <p class="text-[#00000085] text-sm font-medium">
+                            <p className="text-[#00000085] text-sm font-medium">
                                 21 Transactions
                             </p>
                         </div>
-                        <div class="month-card w-full h-[150px] p-3 flex flex-col bg-white border-r-[1px] border-b-[1px] border-[#00000050]">
-                            <p class="font-[Fredoka] text-xl">February</p>
-                            <p class="h-full text-base text-[#000000B2]">
+                        <div className="month-card w-full h-[150px] p-3 flex flex-col bg-white border-r-[1px] border-b-[1px] border-[#00000050]">
+                            <p className="font-[Fredoka] text-xl">February</p>
+                            <p className="h-full text-base text-[#000000B2]">
                                 2025
                             </p>
 
-                            <p class="text-[#2F855A] text-lg font-bold">
+                            <p className="text-[#2F855A] text-lg font-bold">
                                 + Rp 325.500
                             </p>
-                            <p class="text-[#00000085] text-sm font-medium">
+                            <p className="text-[#00000085] text-sm font-medium">
                                 21 Transactions
                             </p>
                         </div>
-                        <div class="month-card w-full h-[150px] p-3 flex flex-col bg-white border-r-[1px] border-b-[1px] border-[#00000050] !bg-[#ffa8f44f] backdrop-sepia-50 backdrop-contrast[1.5]">
-                            <p class="font-[Fredoka] text-xl">March</p>
-                            <p class="h-full text-base text-[#000000B2]">
+                        <div className="month-card w-full h-[150px] p-3 flex flex-col bg-white border-r-[1px] border-b-[1px] border-[#00000050] !bg-[#ffa8f44f] backdrop-sepia-50 backdrop-contrast[1.5]">
+                            <p className="font-[Fredoka] text-xl">March</p>
+                            <p className="h-full text-base text-[#000000B2]">
                                 2025
                             </p>
 
-                            <p class="text-[#000000c0] text-sm font-bold">
+                            <p className="text-[#000000c0] text-sm font-bold">
                                 No Transactions
                             </p>
                         </div>
-                        <div class="month-card w-full h-[150px] p-3 flex flex-col bg-white border-r-[1px] border-b-[1px] border-[#00000050]">
-                            <p class="font-[Fredoka] text-xl">April</p>
-                            <p class="h-full text-base text-[#000000B2]">
+                        <div className="month-card w-full h-[150px] p-3 flex flex-col bg-white border-r-[1px] border-b-[1px] border-[#00000050]">
+                            <p className="font-[Fredoka] text-xl">April</p>
+                            <p className="h-full text-base text-[#000000B2]">
                                 2025
                             </p>
 
-                            <p class="text-[#2F855A] text-lg font-bold">
+                            <p className="text-[#2F855A] text-lg font-bold">
                                 + Rp 325.500
                             </p>
-                            <p class="text-[#00000085] text-sm font-medium">
+                            <p className="text-[#00000085] text-sm font-medium">
                                 21 Transactions
                             </p>
                         </div>
-                        <div class="month-card w-full h-[150px] p-3 flex flex-col bg-white border-r-[1px] border-b-[1px] border-[#00000050] !bg-[#ffa8f44f] backdrop-sepia-50 backdrop-contrast[1.5]">
-                            <p class="font-[Fredoka] text-xl">May</p>
-                            <p class="h-full text-base text-[#000000B2]">
+                        <div className="month-card w-full h-[150px] p-3 flex flex-col bg-white border-r-[1px] border-b-[1px] border-[#00000050] !bg-[#ffa8f44f] backdrop-sepia-50 backdrop-contrast[1.5]">
+                            <p className="font-[Fredoka] text-xl">May</p>
+                            <p className="h-full text-base text-[#000000B2]">
                                 2025
                             </p>
 
-                            <p class="text-[#000000c0] text-sm font-bold">
+                            <p className="text-[#000000c0] text-sm font-bold">
                                 No Transactions
                             </p>
                         </div>
-                        <div class="month-card w-full h-[150px] p-3 flex flex-col bg-white border-r-[1px] border-b-[1px] border-[#00000050] !bg-[#ffa8f44f] backdrop-sepia-50 backdrop-contrast[1.5]">
-                            <p class="font-[Fredoka] text-xl">June</p>
-                            <p class="h-full text-base text-[#000000B2]">
+                        <div className="month-card w-full h-[150px] p-3 flex flex-col bg-white border-r-[1px] border-b-[1px] border-[#00000050] !bg-[#ffa8f44f] backdrop-sepia-50 backdrop-contrast[1.5]">
+                            <p className="font-[Fredoka] text-xl">June</p>
+                            <p className="h-full text-base text-[#000000B2]">
                                 2025
                             </p>
 
-                            <p class="text-[#000000c0] text-sm font-bold">
+                            <p className="text-[#000000c0] text-sm font-bold">
                                 No Transactions
                             </p>
                         </div>
-                        <div class="month-card w-full h-[150px] p-3 flex flex-col bg-white border-r-[1px] border-b-[1px] border-[#00000050]">
-                            <p class="font-[Fredoka] text-xl">July</p>
-                            <p class="h-full text-base text-[#000000B2]">
+                        <div className="month-card w-full h-[150px] p-3 flex flex-col bg-white border-r-[1px] border-b-[1px] border-[#00000050]">
+                            <p className="font-[Fredoka] text-xl">July</p>
+                            <p className="h-full text-base text-[#000000B2]">
                                 2025
                             </p>
 
-                            <p class="text-[#2F855A] text-lg font-bold">
+                            <p className="text-[#2F855A] text-lg font-bold">
                                 + Rp 325.500
                             </p>
-                            <p class="text-[#00000085] text-sm font-medium">
+                            <p className="text-[#00000085] text-sm font-medium">
                                 21 Transactions
                             </p>
                         </div>
-                        <div class="month-card w-full h-[150px] p-3 flex flex-col bg-white border-r-[1px] border-b-[1px] border-[#00000050] !bg-[#ffa8f44f] backdrop-sepia-50 backdrop-contrast[1.5]">
-                            <p class="font-[Fredoka] text-xl">August</p>
-                            <p class="h-full text-base text-[#000000B2]">
+                        <div className="month-card w-full h-[150px] p-3 flex flex-col bg-white border-r-[1px] border-b-[1px] border-[#00000050] !bg-[#ffa8f44f] backdrop-sepia-50 backdrop-contrast[1.5]">
+                            <p className="font-[Fredoka] text-xl">August</p>
+                            <p className="h-full text-base text-[#000000B2]">
                                 2025
                             </p>
 
-                            <p class="text-[#000000c0] text-sm font-bold">
+                            <p className="text-[#000000c0] text-sm font-bold">
                                 No Transactions
                             </p>
                         </div>
-                        <div class="month-card w-full h-[150px] p-3 flex flex-col bg-white border-r-[1px] border-b-[1px] border-[#00000050]">
-                            <p class="font-[Fredoka] text-xl">September</p>
-                            <p class="h-full text-base text-[#000000B2]">
+                        <div className="month-card w-full h-[150px] p-3 flex flex-col bg-white border-r-[1px] border-b-[1px] border-[#00000050]">
+                            <p className="font-[Fredoka] text-xl">September</p>
+                            <p className="h-full text-base text-[#000000B2]">
                                 2025
                             </p>
 
-                            <p class="text-[#2F855A] text-lg font-bold">
+                            <p className="text-[#2F855A] text-lg font-bold">
                                 + Rp 325.500
                             </p>
-                            <p class="text-[#00000085] text-sm font-medium">
+                            <p className="text-[#00000085] text-sm font-medium">
                                 21 Transactions
                             </p>
                         </div>
-                        <div class="month-card w-full h-[150px] p-3 flex flex-col bg-white border-r-[1px] border-b-[1px] border-[#00000050]">
-                            <p class="font-[Fredoka] text-xl">October</p>
-                            <p class="h-full text-base text-[#000000B2]">
+                        <div className="month-card w-full h-[150px] p-3 flex flex-col bg-white border-r-[1px] border-b-[1px] border-[#00000050]">
+                            <p className="font-[Fredoka] text-xl">October</p>
+                            <p className="h-full text-base text-[#000000B2]">
                                 2025
                             </p>
 
-                            <p class="text-[#2F855A] text-lg font-bold">
+                            <p className="text-[#2F855A] text-lg font-bold">
                                 + Rp 325.500
                             </p>
-                            <p class="text-[#00000085] text-sm font-medium">
+                            <p className="text-[#00000085] text-sm font-medium">
                                 21 Transactions
                             </p>
                         </div>
-                        <div class="month-card w-full h-[150px] p-3 flex flex-col bg-white border-r-[1px] border-b-[1px] border-[#00000050] !bg-[#ffa8f44f] backdrop-sepia-50 backdrop-contrast[1.5]">
-                            <p class="font-[Fredoka] text-xl">November</p>
-                            <p class="h-full text-base text-[#000000B2]">
+                        <div className="month-card w-full h-[150px] p-3 flex flex-col bg-white border-r-[1px] border-b-[1px] border-[#00000050] !bg-[#ffa8f44f] backdrop-sepia-50 backdrop-contrast[1.5]">
+                            <p className="font-[Fredoka] text-xl">November</p>
+                            <p className="h-full text-base text-[#000000B2]">
                                 2025
                             </p>
 
-                            <p class="text-[#000000c0] text-sm font-bold">
+                            <p className="text-[#000000c0] text-sm font-bold">
                                 No Transactions
                             </p>
                         </div>
-                        <div class="month-card w-full h-[150px] p-3 flex flex-col bg-white border-r-[1px] border-b-[1px] border-[#00000050]">
-                            <p class="font-[Fredoka] text-xl">December</p>
-                            <p class="h-full text-base text-[#000000B2]">
+                        <div className="month-card w-full h-[150px] p-3 flex flex-col bg-white border-r-[1px] border-b-[1px] border-[#00000050]">
+                            <p className="font-[Fredoka] text-xl">December</p>
+                            <p className="h-full text-base text-[#000000B2]">
                                 2025
                             </p>
 
-                            <p class="text-[#2F855A] text-lg font-bold">
+                            <p className="text-[#2F855A] text-lg font-bold">
                                 + Rp 325.500
                             </p>
-                            <p class="text-[#00000085] text-sm font-medium">
+                            <p className="text-[#00000085] text-sm font-medium">
                                 21 Transactions
                             </p>
                         </div>
                     </div>
 
-                    <div class="flex items-center gap-4 py-1">
-                        <div class="w-full h-[18px] bg-[url('../img/calendar-decor.png')] opacity-50"></div>
-                        <p class="underline decoration-[#0000ff] decoration-[1.5px] decoration-wavy text-center text-3xl font-semibold text-shadow-[0_2px_4px_white,0_-2px_4px_white]">
+                    <div className="flex items-center gap-4 py-1">
+                        <div className="w-full h-[18px] bg-[url('../img/calendar-decor.png')] opacity-50"></div>
+                        <p className="underline decoration-[#0000ff] decoration-[1.5px] decoration-wavy text-center text-3xl font-semibold text-shadow-[0_2px_4px_white,0_-2px_4px_white]">
                             2026
                         </p>
-                        <div class="w-full h-[18px] bg-[url('../img/calendar-decor.png')] opacity-50"></div>
+                        <div className="w-full h-[18px] bg-[url('../img/calendar-decor.png')] opacity-50"></div>
                     </div>
-                    <div class="grid md:grid-cols-4 lg:grid-cols-6 border-l-1 border-t-1 border-[#00000050] [&>div]:odd:bg-[#ffffff90] [&>div]:odd:backdrop-contrast-[1.75] [&>div]:even:bg-[#ffffff50] [&>div]:even:backdrop-sepia-100 [&>div]:hover:shadow-[0_2px_8px_4px_#00000020,0_1px_0px_0px_#00000080_inset] [&>div]:hover:translate-y-[-2px] [&>div]:hover:backdrop-contrast-[5] [&>.month-card]:cursor-pointer [&>div]:transition-shadow [&>div]:transition-transform ">
-                        <div class="month-card w-full h-[150px] p-3 flex flex-col  border-r-[1px] border-b-[1px] border-[#00000050]">
-                            <p class="font-[Fredoka] text-xl">January</p>
-                            <p class="h-full text-base text-[#000000B2]">
+                    <div className="grid md:grid-cols-4 lg:grid-cols-6 border-l-1 border-t-1 border-[#00000050] [&>div]:odd:bg-[#ffffff90] [&>div]:odd:backdrop-contrast-[1.75] [&>div]:even:bg-[#ffffff50] [&>div]:even:backdrop-sepia-100 [&>div]:hover:shadow-[0_2px_8px_4px_#00000020,0_1px_0px_0px_#00000080_inset] [&>div]:hover:translate-y-[-2px] [&>div]:hover:backdrop-contrast-[5] [&>.month-card]:cursor-pointer [&>div]:transition-shadow [&>div]:transition-transform ">
+                        <div className="month-card w-full h-[150px] p-3 flex flex-col  border-r-[1px] border-b-[1px] border-[#00000050]">
+                            <p className="font-[Fredoka] text-xl">January</p>
+                            <p className="h-full text-base text-[#000000B2]">
                                 2025
                             </p>
 
-                            <p class="text-[#2F855A] text-lg font-bold">
+                            <p className="text-[#2F855A] text-lg font-bold">
                                 + Rp 325.500
                             </p>
-                            <p class="text-[#00000085] text-sm font-medium">
+                            <p className="text-[#00000085] text-sm font-medium">
                                 21 Transactions
                             </p>
                         </div>
-                        <div class="month-card w-full h-[150px] p-3 flex flex-col bg-white border-r-[1px] border-b-[1px] border-[#00000050]">
-                            <p class="font-[Fredoka] text-xl">February</p>
-                            <p class="h-full text-base text-[#000000B2]">
+                        <div className="month-card w-full h-[150px] p-3 flex flex-col bg-white border-r-[1px] border-b-[1px] border-[#00000050]">
+                            <p className="font-[Fredoka] text-xl">February</p>
+                            <p className="h-full text-base text-[#000000B2]">
                                 2025
                             </p>
 
-                            <p class="text-[#2F855A] text-lg font-bold">
+                            <p className="text-[#2F855A] text-lg font-bold">
                                 + Rp 325.500
                             </p>
-                            <p class="text-[#00000085] text-sm font-medium">
+                            <p className="text-[#00000085] text-sm font-medium">
                                 21 Transactions
                             </p>
                         </div>
-                        <div class="month-card w-full h-[150px] p-3 flex flex-col bg-white border-r-[1px] border-b-[1px] border-[#00000050] !bg-[#ffa8f44f] backdrop-sepia-50 backdrop-contrast[1.5]">
-                            <p class="font-[Fredoka] text-xl">March</p>
-                            <p class="h-full text-base text-[#000000B2]">
+                        <div className="month-card w-full h-[150px] p-3 flex flex-col bg-white border-r-[1px] border-b-[1px] border-[#00000050] !bg-[#ffa8f44f] backdrop-sepia-50 backdrop-contrast[1.5]">
+                            <p className="font-[Fredoka] text-xl">March</p>
+                            <p className="h-full text-base text-[#000000B2]">
                                 2025
                             </p>
 
-                            <p class="text-[#000000c0] text-sm font-bold">
+                            <p className="text-[#000000c0] text-sm font-bold">
                                 No Transactions
                             </p>
                         </div>
-                        <div class="month-card w-full h-[150px] p-3 flex flex-col bg-white border-r-[1px] border-b-[1px] border-[#00000050]">
-                            <p class="font-[Fredoka] text-xl">April</p>
-                            <p class="h-full text-base text-[#000000B2]">
+                        <div className="month-card w-full h-[150px] p-3 flex flex-col bg-white border-r-[1px] border-b-[1px] border-[#00000050]">
+                            <p className="font-[Fredoka] text-xl">April</p>
+                            <p className="h-full text-base text-[#000000B2]">
                                 2025
                             </p>
 
-                            <p class="text-[#2F855A] text-lg font-bold">
+                            <p className="text-[#2F855A] text-lg font-bold">
                                 + Rp 325.500
                             </p>
-                            <p class="text-[#00000085] text-sm font-medium">
+                            <p className="text-[#00000085] text-sm font-medium">
                                 21 Transactions
                             </p>
                         </div>

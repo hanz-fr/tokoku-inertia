@@ -15,8 +15,6 @@ export default function DashboardLayout({ children }) {
         { href: "/booth", label: "Booth", icon: BoothIcon },
     ];
 
-    console.log(url);
-
     return (
         <>
             <Head title="Dashboard" />

@@ -1,5 +1,6 @@
 import { Link, Head } from '@inertiajs/react'
 import { useState } from 'react'
+import Button from '../Components/Buttons'
 
 const faqs = [
     {
@@ -129,12 +130,9 @@ export default function Home() {
                                             </li>
                                         ))}
                                     </ul>
-                                    <Link
-                                        href="/register"
-                                        className="border-2 border-blue-500 text-blue-500 p-3 text-center w-full block rounded-md font-bold mt-auto hover:bg-blue-50 transition-colors"
-                                    >
+                                    <Button className={'mt-auto'} href={'/register'} variant={'outline'}>
                                         Start Free
-                                    </Link>
+                                    </Button>
                                 </div>
 
                                 <div className="bg-white rounded-xl flex flex-col px-8 py-8 shadow relative border-2 border-blue-500 sm:scale-105">
@@ -159,12 +157,9 @@ export default function Home() {
                                             </li>
                                         ))}
                                     </ul>
-                                    <Link
-                                        href="/register"
-                                        className="bg-blue-500 text-white p-3 text-center w-full block rounded-md font-bold mt-auto hover:bg-blue-700 transition-colors"
-                                    >
+                                    <Button href={'/register'}>
                                         Try 14 Days Trial
-                                    </Link>
+                                    </Button>
                                 </div>
 
                             </div>
