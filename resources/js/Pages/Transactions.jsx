@@ -2,6 +2,7 @@ import React from "react";
 import { Link, Head } from "@inertiajs/react";
 import DashboardLayout from "./DashboardLayout";
 import Button from "../Components/Buttons";
+import { Card, CardHeader, CardTitle, CardActions } from "../Components/Card";
 
 export default function Transactions() {
     return (
@@ -46,16 +47,16 @@ export default function Transactions() {
                     </a>
                 </nav>
 
-                <div className="bg-white rounded-lg p-4 md:p-6 mb-6 flex flex-col md:flex-row md:items-center gap-4">
-                    <h1 className="text-xl md:text-3xl font-bold text-gray-800 flex-1">
-                        Transactions
-                    </h1>
-                    <div className="flex flex-col sm:flex-row gap-2 md:ml-auto">
-                        <Button>
-                            <span>See all transactions</span>
-                        </Button>
-                    </div>
-                </div>
+                <Card className="mb-6">
+                    <CardHeader>
+                        <CardTitle>Transactions</CardTitle>
+                        <CardActions>
+                            <Button className="text-nowrap">
+                                See all transactions
+                            </Button>
+                        </CardActions>
+                    </CardHeader>
+                </Card>
 
                 <div
                     id="calendar-container"
