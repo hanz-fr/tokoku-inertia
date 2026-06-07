@@ -7,11 +7,15 @@ use Database\Factories\UserFactory;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Attributes\Hidden;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
-#[Fillable(['name', 'email', 'password', 'image'])]
+use App\Models\Event;
+use App\Models\Booth;
+
+#[Fillable(['name', 'email', 'password', 'image', 'role'])]
 #[Hidden(['password', 'remember_token'])]
 class User extends Authenticatable
 {
@@ -30,9 +34,19 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
-
-    public function midtransConfig(): HasOne
+    
+    public function events()
     {
-        return $this->hasOne(MidtransConfig::class);
+        return $this->hasMany(Event::class, 'owner_id', 'id');
+    }
+
+    public function booth()
+    {
+        return $this->hasOne(Booth::class, 'owner_id', 'id');
+    }
+
+    public function productPayments(): HasMany
+    {
+        return $this->hasMany(ProductPayment::class);
     }
 }

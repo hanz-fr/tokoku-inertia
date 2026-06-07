@@ -5,12 +5,11 @@ import { Link, useForm, usePage } from "@inertiajs/react";
 import DashboardLayout from "../../Layouts/DashboardLayout";
 import { toast } from "sonner";
 
-export default function Profile({ user }) {
+export default function Show({ user }) {
     const { flash } = usePage();
     const fileInputRef = useRef(null);
     const [showDialog, setShowDialog] = useState(false);
     const [previewUrl, setPreviewUrl] = useState(user.image);
-    const [hasImageChange, setHasImageChange] = useState(false);
 
     const { data, setData, put, processing, errors } = useForm({
         name: user.name,
@@ -24,7 +23,6 @@ export default function Profile({ user }) {
         const file = e.target.files[0];
         if (file) {
             setData('image', file);
-            setHasImageChange(true);
             setPreviewUrl(URL.createObjectURL(file));
         }
     };
@@ -68,7 +66,7 @@ export default function Profile({ user }) {
                     </Link>
                     <ChevronRightIcon />
                     <Link
-                        href={"/profile"}
+                        href={"#"}
                         className="flex items-center text-gray-700 hover:text-blue-500"
                     >
                         Profile
