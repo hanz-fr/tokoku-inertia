@@ -272,7 +272,7 @@ export default function Home({ upcomingEvents, pastEvents }) {
                         <p className="text-gray-500 text-center">There are currently no events happening right now. Check back later!</p>
                     </div>
                 ) : (
-                    <div className="flex overflow-x-auto gap-6 pb-8 snap-x snap-mandatory scrollbar-hide -mx-6 px-6 md:mx-0 md:px-0">
+                    <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
                         {upcomingEvents.map((event) => (
                             <EventCard key={event.id} {...event} />
                         ))}
@@ -300,7 +300,7 @@ export default function Home({ upcomingEvents, pastEvents }) {
                         <p className="text-gray-500 text-center">Stay tuned! Past events will be listed here.</p>
                     </div>
                 ) : (
-                    <div className="flex overflow-x-auto gap-6 pb-8 snap-x snap-mandatory scrollbar-hide -mx-6 px-6 md:mx-0 md:px-0">
+                    <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
                         {pastEvents.map((event) => (
                             <EventCard key={event.id} {...event} />
                         ))}

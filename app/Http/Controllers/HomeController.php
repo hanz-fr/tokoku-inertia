@@ -16,7 +16,6 @@ class HomeController extends Controller
             ->where('visibility', 'public')
             ->where('date_end', '>=', now())
             ->orderBy('date_start')
-            ->take(4)
             ->get()
             ->map(function ($event) {
                 $start = Carbon::parse($event->date_start);
@@ -40,7 +39,6 @@ class HomeController extends Controller
             ->where('visibility', 'public')
             ->where('date_end', '<', now())
             ->orderByDesc('date_end')
-            ->take(4)
             ->get()
             ->map(function ($event) {
                 $start = Carbon::parse($event->date_start);
