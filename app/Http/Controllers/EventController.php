@@ -9,6 +9,7 @@ use Inertia\Inertia;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
 
 class EventController extends Controller
 {
@@ -17,17 +18,21 @@ class EventController extends Controller
      */
     public function index()
     {
-        $events = Event::where('owner_id', auth()->id())
-            ->latest()
-            ->get()
-            ->map(function ($event) {
-                return [
-                    'id' => $event->id,
-                    'name' => $event->name,
-                    'date_start' => $event->date_start->format('d M Y, H:i'),
-                    'date_end' => $event->date_end->format('d M Y, H:i'),
-                ];
-            });
+        if (Auth::user()->role == 'admin') {
+            $events = Event::all();
+        } else {
+            $events = Event::where('owner_id', auth()->id())
+                ->latest()
+                ->get()
+                ->map(function ($event) {
+                    return [
+                        'id' => $event->id,
+                        'name' => $event->name,
+                        'date_start' => $event->date_start->format('d M Y, H:i'),
+                        'date_end' => $event->date_end->format('d M Y, H:i'),
+                    ];
+                });
+        }
 
         return Inertia::render('Event/Index', [
             'events' => $events,

@@ -26,6 +26,12 @@ export default function DashboardLayout({ children }) {
             { href: "/payment-link", label: "Payment Link", icon: PaymentIcon },
             { href: "/products", label: "Products", icon: ProductsIcon },
             { href: "/booth", label: "Booth", icon: BoothIcon },
+        ] :
+        auth.user?.role === 'admin' ?  [
+            { href: "/dashboard", label: "Dashboard", icon: HomeIcon },
+            { href: "/events", label: "Events", icon: BoothIcon },
+            { href: "/products", label: "Products", icon: ProductsIcon },
+            { href: "/profile", label: "Users", icon: UserIcon },
         ] : [];
 
     return (
