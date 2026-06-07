@@ -43,6 +43,7 @@ function CheckoutAction({ boothId, product, isPaymentReady }) {
                     method: "midtrans",
                 }),
             });
+            
             const data = await response.json();
             if (data["orderId"] == null) throw new Error("orderId not found");
 
