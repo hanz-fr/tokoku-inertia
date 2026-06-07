@@ -100,7 +100,7 @@ export default function DashboardLayout({ children }) {
                         </Link>
 
                         <div className="flex items-center gap-2 ml-auto">
-                            <div className="relative">
+                            {/* <div className="relative">
                                 <Button
                                     variant={'ghost'}
                                     onClick={() => setNotifOpen(!notifOpen)}
@@ -122,7 +122,7 @@ export default function DashboardLayout({ children }) {
                                         </div>
                                     </div>
                                 )}
-                            </div>
+                            </div> */}
 
                             <div className="relative">
                                 <Button
