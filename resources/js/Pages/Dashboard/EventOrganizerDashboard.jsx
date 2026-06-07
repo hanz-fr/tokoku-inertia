@@ -4,6 +4,8 @@ import Button from "../../Components/Buttons";
 import { Icon } from '@iconify/react';
 
 export default function EventOrganizerDashboard({ recentEvent, totalRevenue, totalBoothSpaceSold }) {
+    console.log(recentEvent);
+
     return (
         <div className="p-4 md:p-8 w-full max-w-7xl mx-auto">
             <div className="mb-8">

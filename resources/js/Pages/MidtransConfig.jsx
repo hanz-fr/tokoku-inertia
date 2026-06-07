@@ -153,7 +153,7 @@ export default function MidtransConfig({ serverKey, clientKey }) {
                     <Card className="p-6">
                         {/* <h3 className="mb-2 text-2xl font-semibold">What is this?</h3> */}
                         <div className="w-full flex justify-center">
-                            <img src="/images/midtrans_why.png" />
+                            <img src="/storage/midtrans_why.png" />
                         </div>
                         <div className="flex mt-4 gap-1">
                             <InfoIcon size={24} className="shrink-0 mt-0" />

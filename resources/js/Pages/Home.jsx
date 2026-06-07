@@ -71,6 +71,8 @@ function FaqItem({ question, answer, onToggle, isOpen }) {
 }
 
 function EventCard({ id, title, date, city, image }) {
+    console.log('image: '+image)
+
     return (
         <Link href={`/detail/event/${id}`} className="group w-64 md:w-72 shrink-0 bg-white hover:bg-gray-200 rounded-2xl overflow-hidden shadow-sm border border-gray-100 snap-start hover:shadow-md transition-shadow duration-300 flex flex-col">
             <div className="aspect-4/5 w-full overflow-hidden relative bg-gray-100">
@@ -93,6 +95,8 @@ function EventCard({ id, title, date, city, image }) {
 
 export default function Home({ upcomingEvents, pastEvents }) {
     const featuredEvent = upcomingEvents?.[0] || pastEvents?.[0];
+
+    console.log(featuredEvent.image)
     
     const [activeIndex, setActiveIndex] = useState(null);
     const [heroSlide, setHeroSlide] = useState(featuredEvent ? 0 : 1);

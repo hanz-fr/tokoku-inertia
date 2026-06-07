@@ -13,6 +13,8 @@ export default function DashboardLayout({ children }) {
     const [mobileVisible, setMobileVisible] = useState(false);
     const userId = auth?.user?.id;
 
+    console.log(auth.user.image);
+
     const navItems = auth.user?.role === 'event organizer' 
         ? [
             { href: "/dashboard", label: "Dashboard", icon: HomeIcon },
@@ -126,7 +128,7 @@ export default function DashboardLayout({ children }) {
                                     <div className="w-8 h-8 rounded-full overflow-hidden bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center text-white font-semibold text-sm">
                                         {auth.user.image ? (
                                             <img
-                                                src={auth.user.image}
+                                                src={'/storage/'+auth.user.image}
                                                 alt={auth.user.name}
                                                 className="w-full h-full object-cover"
                                             />

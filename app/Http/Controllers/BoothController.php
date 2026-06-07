@@ -6,7 +6,7 @@ use App\Models\Booth;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 
 class BoothController extends Controller
 {
@@ -61,38 +61,19 @@ class BoothController extends Controller
     public function update(Request $request, String $boothId)
     {
         $booth = Booth::findOrFail($boothId);
-
-        $rules = [
-            'name'          => 'required|string|max:255',
-            'description'   => 'nullable|string|max:255',
-            'email'         => 'nullable|string|max:255',
-            'phone'         => 'nullable|string|max:255',     
-            'instagram'     => 'nullable|string|max:255',     
-            'twitter'       => 'nullable|string|max:255',     
-        ];
-
+        $rules = ['name' => 'required|string|max:255', 'description' => 'nullable|string|max:255', 'email' => 'nullable|string|max:255', 'phone' => 'nullable|string|max:255', 'instagram' => 'nullable|string|max:255', 'twitter' => 'nullable|string|max:255',];
         if ($request->image != $booth->image) {
             $rules['image'] = 'nullable|image|mimes:jpeg,png,jpg|max:2048';
         }
-
         $validated = $request->validate($rules);
-
         if ($request->hasFile('image') && ($request->image != $booth->image)) {
-            if ($booth->image && File::exists(public_path($booth->image))) {
-                File::delete(public_path($booth->image));
+            if ($booth->image) {
+                Storage::disk('public')->delete($booth->image);
             }
-
-            $imageName = time().'.'.$request->image->extension();
-            $request->image->move(public_path('images/booth'), $imageName);
-            $validated['image'] = '/images/booth/' . $imageName;
+            $validated['image'] = $request->file('image')->store('images/booth', 'public');
         }
-
         $booth->update($validated);
-
-        Inertia::flash([
-            'status' => 'success',
-            'message' => 'Booth updated successfully'
-        ]);
+        Inertia::flash(['status' => 'success', 'message' => 'Booth updated successfully']);
     }
 
     /**

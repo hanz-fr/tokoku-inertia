@@ -14,6 +14,8 @@ class ProductController extends Controller
 {
     public function index()
     {
+        $user = Auth::user();
+        $booth = $user->booth;
 
         if (Auth::user()->role == 'admin') {
             $products = Product::get(['id', 'name', 'description', 'price', 'created_at'])->map(
@@ -24,15 +26,17 @@ class ProductController extends Controller
             );
         } else {
             $boothId = Booth::where('owner_id', Auth::user()->id)->first()->id;
-            $products = Product::where('booth_id', $boothId)->get(['id', 'name', 'description', 'price', 'created_at'])->map(
-                function ($product) {
+
+            $products = Product::where('booth_id', $boothId)
+                ->get(['id', 'name', 'description', 'price', 'created_at'])
+                ->map(function ($product) {
                     $product->created_at_humanreadable = $product->created_at->diffForHumans();
                     return $product;
-                }
-            );
+                });
         }
         return Inertia::render('Products/Index', [
             'products' => $products,
+            'booth' => $booth,
         ]);
     }
 
@@ -56,13 +60,8 @@ class ProductController extends Controller
         ]);
 
         if ($request->hasFile('image')) {
-            $file = $request->file('image');
-
-            $filename = time() . '_' . $file->getClientOriginalName();
-
-            $file->move(public_path('images/products'), $filename);
-
-            $validated['image'] = 'images/products/' . $filename;
+            $validated['image'] = $request->file('image')
+                ->store('images/products', 'public');
         }
 
         $validated['id'] = Str::uuid();
@@ -80,16 +79,22 @@ class ProductController extends Controller
 
     public function show(Product $product)
     {
-        $hasImage = $product->image && file_exists(public_path($product->image));
+        $hasImage = $product->image && Storage::disk('public')->exists($product->image);
 
-        return Inertia::render('Products/Show', ['product' => $product, 'hasImage' => $hasImage]);
+        return Inertia::render('Products/Show', [
+            'product' => $product,
+            'hasImage' => $hasImage
+        ]);
     }
 
     public function edit(Product $product)
     {
-        $hasImage = $product->image && file_exists(public_path($product->image));
+        $hasImage = $product->image && Storage::disk('public')->exists($product->image);
 
-        return Inertia::render('Products/Edit', ['product' => $product, 'hasImage' => $hasImage]);
+        return Inertia::render('Products/Edit', [
+            'product' => $product,
+            'hasImage' => $hasImage
+        ]);
     }
 
     public function update(Request $request, Product $product)
@@ -107,17 +112,12 @@ class ProductController extends Controller
         ]);
 
         if ($request->hasFile('image')) {
-
-            if ($product->image && file_exists(public_path($product->image))) {
-                unlink(public_path($product->image));
+            if ($product->image) {
+                Storage::disk('public')->delete($product->image);
             }
 
-            $file = $request->file('image');
-            $filename = Str::uuid() . '.' . $file->getClientOriginalExtension();
-
-            $file->move(public_path('images/products'), $filename);
-
-            $validated['image'] = 'images/products/' . $filename;
+            $validated['image'] = $request->file('image')
+                ->store('images/products', 'public');
         } else {
             $validated['image'] = $product->image;
         }

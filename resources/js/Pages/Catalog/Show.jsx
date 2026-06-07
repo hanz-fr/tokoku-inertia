@@ -44,7 +44,6 @@ function CheckoutAction({ boothId, product, isPaymentReady }) {
                 }),
             });
             const data = await response.json();
-            console.log(data)
             if (data["orderId"] == null) throw new Error("orderId not found");
 
             router.visit(

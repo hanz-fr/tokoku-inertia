@@ -9,7 +9,7 @@ export default function Show({ user }) {
     const { flash } = usePage();
     const fileInputRef = useRef(null);
     const [showDialog, setShowDialog] = useState(false);
-    const [previewUrl, setPreviewUrl] = useState(user.image);
+    const [previewUrl, setPreviewUrl] = useState('/storage/'+user.image);
 
     const { data, setData, put, processing, errors } = useForm({
         name: user.name,

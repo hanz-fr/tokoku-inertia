@@ -30,7 +30,7 @@ export default function Header() {
                                     <div className="w-8 h-8 rounded-full overflow-hidden bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center text-white font-semibold text-sm">
                                         {auth?.user?.image ? (
                                             <img
-                                                src={auth?.user?.image}
+                                                src={'/storage/'+auth?.user?.image}
                                                 alt={auth?.user?.name}
                                                 className="w-full h-full object-cover"
                                             />
