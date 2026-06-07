@@ -22,19 +22,16 @@ class SubscriptionPaymentController extends Controller
 
     public function store(Request $request)
     {
-        // 1. Tembak pake Server Key lu
         Config::$serverKey = env('MIDTRANS_SERVER_KEY');
         Config::$isProduction = false; 
         Config::$isSanitized = true;
         Config::$is3ds = true;
 
-        // 2. Tagihan Paket "Pro" Rp 199.000
         $params = [
             'transaction_details' => [
                 'order_id' => 'PRO-SUB-' . time(),
                 'gross_amount' => 199000, 
             ],
-            // 3. JURUS PAYLATER
             'enabled_payments' => [
                 'akulaku', 
                 'shopeepay', 

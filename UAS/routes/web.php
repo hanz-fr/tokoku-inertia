@@ -20,6 +20,8 @@ Route::get('/features', fn() => Inertia::render('Features'));
 Route::get('/pricing', fn() => Inertia::render('Pricing'));
 Route::get('/contact', fn() => Inertia::render('Contact'));
 Route::get('/support', fn() => Inertia::render('Support'));
+Route::get('/help-center', fn() => Inertia::render('HelpCenter'))->name('help-center');
+Route::get('/pricing', fn() => Inertia::render('Pricing'))->name('pricing');
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', fn() => Inertia::render('Dashboard'));
