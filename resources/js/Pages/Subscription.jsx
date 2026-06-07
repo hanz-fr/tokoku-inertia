@@ -3,8 +3,35 @@ import { HomeIcon, ChevronRightIcon, EditIcon } from "../Components/Icons";
 import Button from "../Components/Buttons";
 import { Head, Link } from "@inertiajs/react";
 import DashboardLayout from "../Layouts/DashboardLayout";
+import axios from "axios";
 
 export default function Subscription() {
+    const handleUpgrade = async () => {
+        try {
+            const response = await axios.post('/upgrade');
+            window.snap.pay(response.data.snap_token, {
+                onSuccess: function(result){
+                    alert("Payment successful. Your subscription has been upgraded to Pro."); 
+                    console.log("Success Result:", result);
+                },
+                onPending: function(result){
+                    alert("Payment pending. Please complete your transaction to activate the Pro plan."); 
+                    console.log("Pending Result:", result);
+                },
+                onError: function(result){
+                    alert("Payment failed. Please try again or contact our support team."); 
+                    console.log("Error Result:", result);
+                },
+                onClose: function(){
+                    alert("Payment window closed. The transaction was not completed.");
+                }
+            });
+        } catch (error) {
+            console.error("Token retrieval error:", error);
+            alert("An error occurred while initiating the payment. Please try again later.");
+        }
+    };
+
     return (
         <DashboardLayout>
             <Head title="Subscription"/>
@@ -79,7 +106,11 @@ export default function Subscription() {
                                     </li>
                                 ))}
                             </ul>
-                            <Button className={'mt-auto'} href={'/upgrade'}>
+                            {}
+                            <Button 
+                                className="mt-auto px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition" 
+                                onClick={handleUpgrade}
+                            >
                                 Upgrade
                             </Button>
                         </div>

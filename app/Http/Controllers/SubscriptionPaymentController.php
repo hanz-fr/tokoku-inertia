@@ -4,60 +4,73 @@ namespace App\Http\Controllers;
 
 use App\Models\SubscriptionPayment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Midtrans\Config;
+use Midtrans\Snap;
 
 class SubscriptionPaymentController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
         //
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        // 1. Tembak pake Server Key lu
+        Config::$serverKey = env('MIDTRANS_SERVER_KEY');
+        Config::$isProduction = false; 
+        Config::$isSanitized = true;
+        Config::$is3ds = true;
+
+        // 2. Tagihan Paket "Pro" Rp 199.000
+        $params = [
+            'transaction_details' => [
+                'order_id' => 'PRO-SUB-' . time(),
+                'gross_amount' => 199000, 
+            ],
+            // 3. JURUS PAYLATER
+            'enabled_payments' => [
+                'akulaku', 
+                'shopeepay', 
+                'gopay', 
+                'kredivo', 
+                'credit_card'
+            ],
+            'customer_details' => [
+                'first_name' => Auth::user()->name ?? 'Juragan',
+                'email' => Auth::user()->email ?? 'toko@example.com',
+            ],
+        ];
+
+        try {
+            $snapToken = Snap::getSnapToken($params);
+            return response()->json(['snap_token' => $snapToken]);
+        } catch (\Exception $e) {
+            return response()->json(['error' => $e->getMessage()], 500);
+        }
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(SubscriptionPayment $subscriptionPayment)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(SubscriptionPayment $subscriptionPayment)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, SubscriptionPayment $subscriptionPayment)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(SubscriptionPayment $subscriptionPayment)
     {
         //

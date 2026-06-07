@@ -18,6 +18,7 @@
         "@iconify-json/basil": "^1.2.4",
         "@iconify/react": "^6.0.2",
         "@inertiajs/react": "^3.0.3",
+        "axios": "^1.17.0",
         "class-variance-authority": "^0.7.1",
         "clsx": "^2.1.1",
         "gridjs": "^6.2.0",
