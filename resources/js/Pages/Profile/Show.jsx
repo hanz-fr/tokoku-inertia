@@ -9,17 +9,21 @@ export default function Profile() {
         "https://images.unsplash.com/photo-1480429370139-e0132c086e2a?q=80&w=688&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     );
     const [showDialog, setShowDialog] = useState(false);
-    const [name, setName] = useState("");
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [confirmPassword, setConfirmPassword] = useState("");
-    const fileInputRef = useRef(null);
+    const [previewUrl, setPreviewUrl] = useState(user.image);
+
+    const { data, setData, put, processing, errors } = useForm({
+        name: user.name,
+        email: user.email,
+        image: user.image,
+        password: "",
+        confirmPassword: ""
+    });
 
     const handleImageChange = (e) => {
         const file = e.target.files[0];
         if (file) {
-            const url = URL.createObjectURL(file);
-            setAvatarSrc(url);
+            setData('image', file);
+            setPreviewUrl(URL.createObjectURL(file));
         }
     };
 
