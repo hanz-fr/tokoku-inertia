@@ -55,7 +55,7 @@ class HomeController extends Controller
                         : $start->format('M d') . ' - ' . $end->format('M d, Y'),
 
                     'city' => $event->location,
-                    'image' => $event->poster,
+                    'image' => $event->getPoster(),
                 ];
             });
 

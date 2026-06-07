@@ -187,8 +187,6 @@ function ProductFilter({ boothId, eventId }) {
 // --- PRODUCT CARD ---
 function ProductCard({ boothId, productId, name, image, price }) {
 
-    console.log(image);
-
     const formattedPrice = useMemo(() => {
         return new Intl.NumberFormat("id-ID", {
             style: "currency",

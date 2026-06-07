@@ -13,8 +13,6 @@ export default function DashboardLayout({ children }) {
     const [mobileVisible, setMobileVisible] = useState(false);
     const userId = auth?.user?.id;
 
-    console.log(auth.user.image);
-
     const navItems = auth.user?.role === 'event organizer' 
         ? [
             { href: "/dashboard", label: "Dashboard", icon: HomeIcon },

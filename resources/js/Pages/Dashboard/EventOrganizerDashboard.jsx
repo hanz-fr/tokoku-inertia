@@ -4,8 +4,6 @@ import Button from "../../Components/Buttons";
 import { Icon } from '@iconify/react';
 
 export default function EventOrganizerDashboard({ recentEvent, totalRevenue, totalBoothSpaceSold }) {
-    console.log(recentEvent);
-
     return (
         <div className="p-4 md:p-8 w-full max-w-7xl mx-auto">
             <div className="mb-8">
@@ -70,7 +68,7 @@ export default function EventOrganizerDashboard({ recentEvent, totalRevenue, tot
                         <div className="flex flex-col sm:flex-row gap-6 items-start">
                             <div className="w-full sm:w-48 aspect-video bg-gray-100 rounded-xl overflow-hidden shrink-0 border border-gray-200">
                                 {recentEvent.poster ? (
-                                    <img src={recentEvent.poster} className="w-full h-full object-cover" alt="Event Poster" />
+                                    <img src={'/storage/'+recentEvent.poster} className="w-full h-full object-cover" alt="Event Poster" />
                                 ) : (
                                     <div className="w-full h-full flex items-center justify-center text-gray-400">
                                         <Icon icon="bx:image" width={48} />

@@ -87,7 +87,7 @@ export default function Show({ product, hasImage }) {
                                 src={
                                     hasImage
                                         ? `/storage/${product.image}`
-                                        : "/images/placeholder.png"
+                                        : "/storage/placeholder.png"
                                 }
                                 alt={product.name}
                                 className="w-full h-auto rounded-lg border"

@@ -117,7 +117,7 @@ export default function Booth({ booth }) {
                                             <img
                                                 src={
                                                     previewUrl ??
-                                                    "/images/placeholder.png"
+                                                    "/storage/placeholder.png"
                                                 }
                                                 alt="Booth Picture"
                                                 className="w-full h-full object-cover"
