@@ -16,7 +16,8 @@ export default function DashboardLayout({ children }) {
     const navItems = auth.user?.role === 'event organizer' 
         ? [
             { href: "/dashboard", label: "Dashboard", icon: HomeIcon },
-            { href: "/events", label: "Events", icon: TransactionsIcon },
+            { href: "/events", label: "Events", icon: BoothIcon },
+            { href: "/registrations", label: "Transactions", icon: TransactionsIcon },
             { href: "/payment-link", label: "Payment Link", icon: PaymentIcon },
         ] :
         auth.user?.role === 'tenant' ?  [
@@ -124,14 +125,14 @@ export default function DashboardLayout({ children }) {
                                     className="flex items-center gap-2 p-1.5 rounded-lg hover:bg-gray-100 text-gray-700"
                                 >
                                     <div className="w-8 h-8 rounded-full overflow-hidden bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center text-white font-semibold text-sm">
-                                        {auth.user.image ? (
+                                        {auth.user?.image ? (
                                             <img
-                                                src={'/storage/'+auth.user.image}
+                                                src={'/storage/'+auth.user?.image}
                                                 alt={auth.user.name}
                                                 className="w-full h-full object-cover"
                                             />
                                         ) : (
-                                            auth.user.name
+                                            auth.user?.name
                                                 .split(' ')
                                                 .slice(0, 2)
                                                 .map(word => word[0])
@@ -149,12 +150,15 @@ export default function DashboardLayout({ children }) {
                                         >
                                             Profile
                                         </Link>
-                                        <Link
-                                            href="/subscription"
-                                            className="block px-4 py-2 text-sm hover:bg-gray-100"
-                                        >
-                                            Subscription
-                                        </Link>
+                                        {
+                                            auth.user?.role === 'event organizer' &&
+                                            <Link
+                                                href="/subscription"
+                                                className="block px-4 py-2 text-sm hover:bg-gray-100"
+                                            >
+                                                Subscription
+                                            </Link>
+                                        }
                                         <Link
                                             href="/logout"
                                             method="post"
