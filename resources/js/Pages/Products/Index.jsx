@@ -20,7 +20,7 @@ import { Grid } from "gridjs-react";
 import { h } from "gridjs";
 import "gridjs/dist/theme/mermaid.css";
 
-export default function Index({ products, error }) {
+export default function Index({ products, error, booth }) {
     const { flash } = usePage();
 
     const data = products.map((p) => [
@@ -79,7 +79,7 @@ export default function Index({ products, error }) {
                     <CardHeader>
                         <CardTitle>Products</CardTitle>
                         <CardActions>
-                            <Button variant="outline" className="text-nowrap">
+                            <Button href={route("catalog", { boothId: booth.id })} variant="outline" className="text-nowrap">
                                 <CatalogueIcon />
                                 <span>Open Catalog</span>
                             </Button>

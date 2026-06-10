@@ -125,7 +125,7 @@ function CheckoutAction({ boothId, product, isPaymentReady }) {
                 <>
                     <hr className="my-3 opacity-20" />
                     <img
-                        src="/images/catalog_payment_not_ready.png"
+                        src="/storage/catalog_payment_not_ready.png"
                         className="w-[50px]"
                     />
                     <div className="flex mt-2 gap-1">

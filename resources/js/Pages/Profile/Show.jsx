@@ -9,7 +9,7 @@ export default function Show({ user }) {
     const { flash } = usePage();
     const fileInputRef = useRef(null);
     const [showDialog, setShowDialog] = useState(false);
-    const [previewUrl, setPreviewUrl] = useState(user.image);
+    const [previewUrl, setPreviewUrl] = useState('/storage/'+user.image);
 
     const { data, setData, put, processing, errors } = useForm({
         name: user.name,
@@ -83,7 +83,7 @@ export default function Show({ user }) {
                             <div className="relative">
                                 <div className="w-48 h-48 bg-gray-300 rounded-lg overflow-hidden">
                                     <img
-                                        src={previewUrl ?? "/images/placeholder.png"}
+                                        src={previewUrl ?? "/storage/placeholder.png"}
                                         alt="Profile Avatar"
                                         className="w-full h-full object-cover"
                                     />

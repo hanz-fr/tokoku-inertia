@@ -20,12 +20,6 @@ export default function Footer({ className }) {
                     >
                         Pricing
                     </Link>
-                    <Link
-                        href="/integrations"
-                        className="text-gray-500 hover:text-blue-600 transition-colors"
-                    >
-                        Integrations
-                    </Link>
                 </div>
                 <div className="flex flex-col gap-4">
                     <span className="font-bold text-gray-900 text-base mb-1">

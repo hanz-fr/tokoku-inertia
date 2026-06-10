@@ -97,7 +97,6 @@ function CheckoutAction({ product }) {
 }
 
 export default function Show({ products }) {
-    console.log(products);
     // const formattedPrice = useMemo(() => {
     //     const formatted = new Intl.NumberFormat("id-ID", {
     //         style: "currency",

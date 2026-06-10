@@ -18,7 +18,7 @@ export default function Contact() {
                 <div className="bg-white p-10 border border-gray-100 rounded-3xl shadow-sm hover:shadow-xl transition-all duration-300 max-w-md mx-auto">
                     <div className="mb-8 flex justify-center">
                         <img
-                            src="images/whatsapp-logo.png"
+                            src="/storage/whatsapp-logo.png"
                             alt="Logo WhatsApp"
                             className="w-20 h-20 object-contain drop-shadow-sm"
                         />

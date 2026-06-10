@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -39,9 +40,8 @@ class UserController extends Controller
         ]);
 
         if ($request->hasFile('image')) {
-            $imageName = time().'.'.$request->image->extension();
-            $request->image->move(public_path('images/userpic'), $imageName);
-            $validated['image'] = '/images/userpic/' . $imageName;
+            $validated['image'] = $request->file('image')
+            ->store('images/userpic', 'public');
         }
 
         $validated['password'] = bcrypt($validated['password']);
@@ -93,13 +93,12 @@ class UserController extends Controller
         }
         
         if ($request->hasFile('image') && ($request->image != $user->image)) {
-            if ($user->image && File::exists(public_path($user->image))) {
-                File::delete(public_path($user->image));
-            }
+            if ($user->image) {
+            Storage::disk('public')->delete($user->image);
+        }
 
-            $imageName = time().'.'.$request->image->extension();
-            $request->image->move(public_path('images/userpic'), $imageName);
-            $validated['image'] = '/images/userpic/' . $imageName;
+        $validated['image'] = $request->file('image')
+            ->store('images/userpic', 'public');
         }
 
         $user->update($validated);
@@ -120,8 +119,8 @@ class UserController extends Controller
     {
         $user = User::findOrFail($userId);
 
-        if ($user->image && File::exists(public_path($user->image))) {
-            File::delete(public_path($user->image));
+        if ($user->image) {
+            Storage::disk('public')->delete($user->image);
         }
 
         $user->delete();

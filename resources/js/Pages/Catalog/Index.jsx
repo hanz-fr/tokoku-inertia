@@ -30,7 +30,7 @@ function BoothProfile({ booth }) {
             <div className="w-24 h-24 sm:w-32 sm:h-32 shrink-0 rounded-full overflow-hidden bg-gray-100 border border-gray-200 flex items-center justify-center">
                 {booth.image ? (
                     <img
-                        src={`${booth.image}`}
+                        src={`/storage/${booth.image}`}
                         alt={booth.name}
                         className="w-full h-full object-cover"
                     />
@@ -186,6 +186,7 @@ function ProductFilter({ boothId, eventId }) {
 
 // --- PRODUCT CARD ---
 function ProductCard({ boothId, productId, name, image, price }) {
+
     const formattedPrice = useMemo(() => {
         return new Intl.NumberFormat("id-ID", {
             style: "currency",

@@ -26,6 +26,12 @@ export default function DashboardLayout({ children }) {
             { href: "/payment-link", label: "Payment Link", icon: PaymentIcon },
             { href: "/products", label: "Products", icon: ProductsIcon },
             { href: "/booth", label: "Booth", icon: BoothIcon },
+        ] :
+        auth.user?.role === 'admin' ?  [
+            { href: "/dashboard", label: "Dashboard", icon: HomeIcon },
+            { href: "/events", label: "Events", icon: BoothIcon },
+            { href: "/products", label: "Products", icon: ProductsIcon },
+            { href: "/profile", label: "Users", icon: UserIcon },
         ] : [];
 
     return (
@@ -94,7 +100,7 @@ export default function DashboardLayout({ children }) {
                         </Link>
 
                         <div className="flex items-center gap-2 ml-auto">
-                            <div className="relative">
+                            {/* <div className="relative">
                                 <Button
                                     variant={'ghost'}
                                     onClick={() => setNotifOpen(!notifOpen)}
@@ -116,7 +122,7 @@ export default function DashboardLayout({ children }) {
                                         </div>
                                     </div>
                                 )}
-                            </div>
+                            </div> */}
 
                             <div className="relative">
                                 <Button
@@ -125,14 +131,14 @@ export default function DashboardLayout({ children }) {
                                     className="flex items-center gap-2 p-1.5 rounded-lg hover:bg-gray-100 text-gray-700"
                                 >
                                     <div className="w-8 h-8 rounded-full overflow-hidden bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center text-white font-semibold text-sm">
-                                        {auth.user.image ? (
+                                        {auth.user?.image ? (
                                             <img
-                                                src={auth.user.image}
+                                                src={'/storage/'+auth.user?.image}
                                                 alt={auth.user.name}
                                                 className="w-full h-full object-cover"
                                             />
                                         ) : (
-                                            auth.user.name
+                                            auth.user?.name
                                                 .split(' ')
                                                 .slice(0, 2)
                                                 .map(word => word[0])
@@ -151,7 +157,7 @@ export default function DashboardLayout({ children }) {
                                             Profile
                                         </Link>
                                         {
-                                            auth.user.role === 'event organizer' &&
+                                            auth.user?.role === 'event organizer' &&
                                             <Link
                                                 href="/subscription"
                                                 className="block px-4 py-2 text-sm hover:bg-gray-100"

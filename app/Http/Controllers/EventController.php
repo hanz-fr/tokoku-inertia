@@ -9,6 +9,7 @@ use Inertia\Inertia;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
 
 class EventController extends Controller
 {
@@ -16,35 +17,34 @@ class EventController extends Controller
      * Display a listing of the resource.
      */
     public function index(Request $req)
-    {
-        $search = $req->query('search');
-        $status = $req->query('status');
+{
+    $search = $req->query('search');
+    $status = $req->query('status');
 
-        $events = Event::where('owner_id', auth()->id())
-            ->where('name', 'like', "%{$search}%")
-            ->when($status, function ($query) use ($status){
-                if ($status == 'upcoming') {
-                    return $query->where('date_end', '>=', now());
-                }
-                else if ($status == 'past') {
-                    return $query->where('date_end', '<', now());
-                }
-            })
-            ->latest()
-            ->get()
-            ->map(function ($event) {
-                return [
-                    'id' => $event->id,
-                    'name' => $event->name,
-                    'date_start' => $event->date_start->format('d M Y, H:i'),
-                    'date_end' => $event->date_end->format('d M Y, H:i'),
-                ];
-            });
+    $query = Event::query();
 
-        return Inertia::render('Event/Index', [
-            'events' => $events,
-        ]);
+    if (Auth::user()->role != 'admin') {
+        $query->where('owner_id', auth()->id());
     }
+
+    $query->when($search, function ($query) use ($search) {
+        $query->where('name', 'like', "%{$search}%");
+    });
+
+    $query->when($status, function ($query) use ($status) {
+        if ($status == 'upcoming') {
+            $query->where('date_end', '>=', now());
+        } elseif ($status == 'past') {
+            $query->where('date_end', '<', now());
+        }
+    });
+
+    $events = $query->latest()->get();
+
+    return Inertia::render('Event/Index', [
+        'events' => $events,
+    ]);
+}
 
     /**
      * Show the form for creating a new resource.
@@ -402,7 +402,7 @@ class EventController extends Controller
             $query->select('booth_id')
                 ->from('booth_tickets')
                 ->where('event_id', $eventId)
-                ->where('status', 'completed'); // Optional: ensures only approved/paid booths show items
+                ->where('status', 'completed'); // Optional: ensures only approved/paid booths show items;
         })->where('name', 'like', "%{$search}%");
 
         if (!empty($category)) {
@@ -414,8 +414,7 @@ class EventController extends Controller
             $data = $product->toArray();
             
             // 2. Overwrite the existing 'image' property with the resolved asset URL
-            $data['image'] = $product->image
-                ? Storage::url($product->image)
+            $data['image'] = $product->image  ? Storage::url($product->image)
                 : 'https://placehold.co/300'; 
 
             // 3. Return the modified array payload

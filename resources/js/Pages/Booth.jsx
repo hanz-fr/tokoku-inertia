@@ -11,7 +11,7 @@ export default function Booth({ booth }) {
     const fileInputRef = useRef(null);
     const [saveOpen, setSaveOpen] = useState(false);
     const [cancelOpen, setCancelOpen] = useState(false);
-    const [previewUrl, setPreviewUrl] = useState(booth.image);
+    const [previewUrl, setPreviewUrl] = useState('/storage/'+booth.image);
 
     const { data, setData, put, processing, errors } = useForm({
         name: booth.name,
@@ -117,7 +117,7 @@ export default function Booth({ booth }) {
                                             <img
                                                 src={
                                                     previewUrl ??
-                                                    "/images/placeholder.png"
+                                                    "/storage/placeholder.png"
                                                 }
                                                 alt="Booth Picture"
                                                 className="w-full h-full object-cover"
