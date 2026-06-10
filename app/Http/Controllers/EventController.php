@@ -10,6 +10,7 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\ValidationException;
 
 class EventController extends Controller
 {
@@ -59,30 +60,55 @@ class EventController extends Controller
      */
     public function store(Request $request)
     {
-        $validated = $request->validate([
-            'name' => 'required|string|max:255',
-            'description' => 'nullable|string',
-            'terms' => 'nullable|array',
-            'terms.*' => 'string',
-            'date_start' => 'required|date',
-            'date_end' => 'required|date|after_or_equal:date_start',
-            'poster' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
-            'location' => 'nullable|string|max:255',
-            'coordinates' => 'nullable|string|max:255',
-            'map' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
-            'contact' => 'nullable|string|max:255',
-            'max_participants' => 'nullable|integer|min:1',
-            'visibility' => 'required|in:public,unlisted,private',
-            
-            // Nested Tickets Validation
-            'tickets' => 'required|array|min:1',
-            'tickets.*.name' => 'required|string|max:255',
-            'tickets.*.price' => 'required|numeric|min:0',
-            'tickets.*.description' => 'nullable|string',
-            'tickets.*.location' => 'nullable|string|max:255',
-            'tickets.*.coordinates' => 'nullable|string|max:255',
-            'tickets.*.map' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
-        ]);
+        try {
+            $validated = $request->validate([
+                'name' => 'required|string|max:255',
+                'description' => 'nullable|string',
+                'terms' => 'nullable|array',
+                'terms.*' => 'string',
+                'date_start' => 'required|date',
+                'date_end' => 'required|date|after_or_equal:date_start',
+                'poster' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
+                'location' => 'nullable|string|max:255',
+                'coordinates' => 'nullable|string|max:255',
+                'map' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
+                'contact' => 'nullable|string|max:255',
+                'max_participants' => 'nullable|integer|min:1',
+                'visibility' => 'required|in:public,unlisted,private',
+
+                // Nested Tickets Validation
+                'tickets' => 'required|array|min:1',
+                'tickets.*.name' => 'required|string|max:255',
+                'tickets.*.price' => 'required|numeric|min:0',
+                'tickets.*.description' => 'nullable|string',
+                'tickets.*.location' => 'nullable|string|max:255',
+                'tickets.*.coordinates' => 'nullable|string|max:255',
+                'tickets.*.map' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
+            ]);
+
+            if ($request['coordinates'] != null) {
+                if (!preg_match('/^[-]?(([0-8]?[0-9])\.(\d+))|(90(\.0+)?);[-]?((((1[0-7][0-9])|([0-9]?[0-9]))\.(\d+))|180(\.0+)?)$/', $request['coordinates'])) {
+                    throw ValidationException::withMessages([
+                        'coordinates' => ['Please input a valid location coordinate.'],
+                    ]);
+                };
+            }
+        } catch (\Illuminate\Validation\ValidationException $e) {
+            $errorMessages = $e->errors();
+
+            if ($request['coordinates'] != null) {
+                if (!preg_match('/^[-]?(([0-8]?[0-9])\.(\d+))|(90(\.0+)?);[-]?((((1[0-7][0-9])|([0-9]?[0-9]))\.(\d+))|180(\.0+)?)$/', $request['coordinates'])) {
+                    throw ValidationException::withMessages([
+                        ...$errorMessages,
+                        'coordinates' => ['Please input a valid location coordinate.'],
+                    ]);
+                };
+            }
+
+            throw ValidationException::withMessages([
+                ...$errorMessages,
+            ]);
+        }
 
         DB::transaction(function () use ($validated, $request) {
             
@@ -212,31 +238,57 @@ class EventController extends Controller
             ->where('owner_id', auth()->id())
             ->firstOrFail();
 
-        $validated = $request->validate([
-            'name' => 'required|string|max:255',
-            'description' => 'nullable|string',
-            'terms' => 'nullable|array',
-            'terms.*' => 'string',
-            'date_start' => 'required|date',
-            'date_end' => 'required|date|after_or_equal:date_start',
-            'poster' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
-            'location' => 'nullable|string|max:255',
-            'coordinates' => 'nullable|string|max:255',
-            'map' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
-            'contact' => 'nullable|string|max:255',
-            'max_participants' => 'nullable|integer|min:1',
-            'visibility' => 'required|in:public,unlisted,private',
-            
-            // Nested Tickets Validation
-            'tickets' => 'required|array|min:1',
-            'tickets.*.id' => 'nullable', // Allow ID to exist so we know if we are updating or creating
-            'tickets.*.name' => 'required|string|max:255',
-            'tickets.*.price' => 'required|numeric|min:0',
-            'tickets.*.description' => 'nullable|string',
-            'tickets.*.location' => 'nullable|string|max:255',
-            'tickets.*.coordinates' => 'nullable|string|max:255',
-            'tickets.*.map' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
-        ]);
+        try {
+            $validated = $request->validate([
+                'name' => 'required|string|max:255',
+                'description' => 'nullable|string',
+                'terms' => 'nullable|array',
+                'terms.*' => 'string',
+                'date_start' => 'required|date',
+                'date_end' => 'required|date|after_or_equal:date_start',
+                'poster' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
+                'location' => 'nullable|string|max:255',
+                'coordinates' => 'nullable|string|max:255',
+                'map' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
+                'contact' => 'nullable|string|max:255',
+                'max_participants' => 'nullable|integer|min:1',
+                'visibility' => 'required|in:public,unlisted,private',
+
+                // Nested Tickets Validation
+                'tickets' => 'required|array|min:1',
+                'tickets.*.id' => 'nullable', // Allow ID to exist so we know if we are updating or creating
+                'tickets.*.name' => 'required|string|max:255',
+                'tickets.*.price' => 'required|numeric|min:0|max:10000000000',
+                'tickets.*.description' => 'nullable|string',
+                'tickets.*.location' => 'nullable|string|max:255',
+                'tickets.*.coordinates' => 'nullable|string|max:255',
+                'tickets.*.map' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
+            ]);
+
+            if ($request['coordinates'] != null) {
+                if (!preg_match('/^[-]?(([0-8]?[0-9])\.(\d+))|(90(\.0+)?);[-]?((((1[0-7][0-9])|([0-9]?[0-9]))\.(\d+))|180(\.0+)?)$/', $request['coordinates'])) {
+                    throw ValidationException::withMessages([
+                        'coordinates' => ['Please input a valid location coordinate.'],
+                    ]);
+                };
+            }
+        } catch (\Illuminate\Validation\ValidationException $e) {
+            $errorMessages = $e->errors();
+
+            if ($request['coordinates'] != null) {
+                if (!preg_match('/^[-]?(([0-8]?[0-9])\.(\d+))|(90(\.0+)?);[-]?((((1[0-7][0-9])|([0-9]?[0-9]))\.(\d+))|180(\.0+)?)$/', $request['coordinates'])) {
+                    throw ValidationException::withMessages([
+                        ...$errorMessages,
+                        'coordinates' => ['Please input a valid location coordinate.'],
+                    ]);
+                };
+            }
+
+
+            throw ValidationException::withMessages([
+                ...$errorMessages,
+            ]);
+        }
 
         DB::transaction(function () use ($validated, $request, $event) {
             

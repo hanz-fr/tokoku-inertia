@@ -42,7 +42,19 @@ export default function Form({ event }) {
     const [saveDialogOpen, setSaveDialogOpen] = useState(false);
     const [cancelDialogOpen, setCancelDialogOpen] = useState(false);
     const [createdDate, setCreatedDate] = useState("");
+    const [previewUrl, setPreviewUrl] = useState('/storage/'+event?.poster_url);
+    const [coordinate, setCoordinate] = useState('');
+    const [coordinateIsValid, setCoordinateIsValid] = useState(false);
 
+    const coordRegex = /^-?([0-8]?[0-9](\.\d+)?|90(\.0+)?),\s*-?((1[0-7][0-9]|[0-9]?[0-9])(\.\d+)?|180(\.0+)?)$/;
+
+    const getLocalDatetimeString = () => {
+      const now = new Date();
+      const offset = now.getTimezoneOffset() * 60000;
+      const localISOTime = new Date(now.getTime() - offset).toISOString();
+      return localISOTime.slice(0, 16);
+    };
+   
     const { data, setData, post, processing, errors, transform } = useForm({
         name: event?.name || "",
         description: event?.description || "",
@@ -66,9 +78,26 @@ export default function Form({ event }) {
         setCreatedDate(dateObj.toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" }));
     }, [event]);
 
+    const handleCoordinateChange = (e) => {
+        const value = e.target.value;
+        
+        setData("coordinates", value);
+
+        if (value === '' || coordRegex.test(value)) {
+            setCoordinateIsValid(true);
+        } else {
+            setCoordinateIsValid(false);
+        }
+    };
+
     const handleChange = (e) => {
         const { id, value, files, type } = e.target;
         setData(id, type === "file" ? files[0] : value);
+        const file = e.target.files[0];
+        if (file) {
+            setData('image', file);
+            setPreviewUrl(URL.createObjectURL(file));
+        }
     };
 
     const handleTicketChange = (id, field, value) => {
@@ -159,20 +188,26 @@ export default function Form({ event }) {
                                 </div>
                                 <div>
                                     <label htmlFor="coordinates" className="block text-sm font-medium text-gray-700 mb-2">Coordinates</label>
-                                    <input id="coordinates" type="text" placeholder="-6.2088, 106.8456" className={inputClass} value={data.coordinates} onChange={handleChange} />
+                                    <input 
+                                        pattern="^-?([0-8]?[0-9](\.\d+)?|90(\.0+)?),\s*-?((1[0-7][0-9]|[0-9]?[0-9])(\.\d+)?|180(\.0+)?)$" 
+                                        id="coordinates" 
+                                        type="text" 
+                                        placeholder="-6.2088, 106.8456" 
+                                        className={`${inputClass} ${(!coordinateIsValid && data.coordinates !== '') ? 'border-red-500 focus:ring-red-500' : ''}`} 
+                                        value={data.coordinates} 
+                                        onChange={handleCoordinateChange} 
+                                    />
+                                    
+                                    {/* Server-side error fallback */}
                                     {errors.coordinates && <p className={errorClass}>{errors.coordinates}</p>}
+                                    
+                                    {/* Live client-side validation error feedback */}
+                                    {!coordinateIsValid && data.coordinates !== '' && (
+                                        <p className="mt-1 text-xs text-red-500">
+                                            Invalid format. Use: Latitude, Longitude (e.g., -6.2088, 106.8456)
+                                        </p>
+                                    )}
                                 </div>
-                            </div>
-                            <div>
-                                <label htmlFor="map" className="block text-sm font-medium text-gray-700 mb-2">Location Map (Image)</label>
-                                <input id="map" type="file" accept="image/*" className={inputClass} onChange={handleChange} />
-                                {isEdit && event?.map_url && (
-                                    <a href={event.map_url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 mt-2 text-sm text-blue-500 hover:text-blue-700">
-                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-                                        View Current Map Image
-                                    </a>
-                                )}
-                                {errors.map && <p className={errorClass}>{errors.map}</p>}
                             </div>
                         </div>
 
@@ -187,7 +222,7 @@ export default function Form({ event }) {
                             <div className="space-y-6">
                                 {data.tickets.map((ticket, index) => (
                                     <div key={ticket.id} className="p-4 border-l-4 border-blue-500 bg-gray-50 rounded-r-lg relative group">
-                                        <button type="button" onClick={() => removeTicket(ticket.id)} className="absolute top-4 right-4 text-red-400 hover:text-red-600">
+                                        <button hidden={index == 0} type="button" onClick={() => removeTicket(ticket.id)} className="absolute top-4 right-4 text-red-400 hover:text-red-600">
                                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
                                                 <path d="M18 6L6 18M6 6l12 12"/>
                                             </svg>
@@ -215,18 +250,6 @@ export default function Form({ event }) {
                                             <div>
                                                 <label className="block text-xs font-medium text-gray-700 mb-1">Coordinates</label>
                                                 <input type="text" value={ticket.coordinates} onChange={(e) => handleTicketChange(ticket.id, 'coordinates', e.target.value)} className={inputClass} />
-                                            </div>
-                                            <div className="md:col-span-2">
-                                                <label className="block text-xs font-medium text-gray-700 mb-1">Specific Map Image (Optional)</label>
-                                                <input type="file" accept="image/*" onChange={(e) => handleTicketChange(ticket.id, 'map', e.target.files[0])} className={inputClass} />
-                                                
-                                                {isEdit && ticket.map_url && (
-                                                    <a href={ticket.map_url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 mt-2 text-sm text-blue-500 hover:text-blue-700">
-                                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-                                                        View Current Ticket Map
-                                                    </a>
-                                                )}
-                                                {errors[`tickets.${index}.map`] && <p className={errorClass}>{errors[`tickets.${index}.map`]}</p>}
                                             </div>
                                         </div>
                                     </div>
@@ -257,12 +280,12 @@ export default function Form({ event }) {
                             <h2 className="text-lg font-semibold text-gray-700">Schedule</h2>
                             <div>
                                 <label htmlFor="date_start" className="block text-sm font-medium text-gray-600 mb-1">Start Date & Time *</label>
-                                <input id="date_start" type="datetime-local" className={inputClass} value={data.date_start} onChange={handleChange} />
+                                <input id="date_start" type="datetime-local" className={inputClass} value={data.date_start} onChange={handleChange} min={getLocalDatetimeString()} />
                                 {errors.date_start && <p className={errorClass}>{errors.date_start}</p>}
                             </div>
                             <div>
                                 <label htmlFor="date_end" className="block text-sm font-medium text-gray-600 mb-1">End Date & Time *</label>
-                                <input id="date_end" type="datetime-local" className={inputClass} value={data.date_end} onChange={handleChange} />
+                                <input id="date_end" type="datetime-local" className={inputClass} value={data.date_end} onChange={handleChange} min={getLocalDatetimeString()} />
                                 {errors.date_end && <p className={errorClass}>{errors.date_end}</p>}
                             </div>
                         </div>
@@ -282,6 +305,13 @@ export default function Form({ event }) {
                         </div>
 
                         <div className="bg-white p-6 rounded-lg shadow space-y-4">
+                            <div hidden={previewUrl == '/storage/undefined' || isEdit} className="w-48 h-48 bg-gray-300 rounded-lg overflow-hidden">
+                                <img
+                                    src={previewUrl ?? "/storage/placeholder.png"}
+                                    alt="Event Poster"
+                                    className="w-full h-full object-cover"
+                                />
+                            </div>
                             <h2 className="text-lg font-semibold text-gray-700">Event Poster</h2>
                             <div>
                                 <input id="poster" type="file" accept="image/*" className={inputClass} onChange={handleChange} />
