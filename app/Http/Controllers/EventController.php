@@ -16,28 +16,35 @@ class EventController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
-    {
-        if (Auth::user()->role == 'admin') {
-            $events = Event::all();
-        } else {
-            $events = Event::where('owner_id', auth()->id())
-                ->latest()
-                ->get()
-                ->map(function ($event) {
-                    return [
-                        'id' => $event->id,
-                        'name' => $event->name,
-                        'date_start' => $event->date_start->format('d M Y, H:i'),
-                        'date_end' => $event->date_end->format('d M Y, H:i'),
-                    ];
-                });
-        }
+    public function index(Request $req)
+{
+    $search = $req->query('search');
+    $status = $req->query('status');
 
-        return Inertia::render('Event/Index', [
-            'events' => $events,
-        ]);
+    $query = Event::query();
+
+    if (Auth::user()->role != 'admin') {
+        $query->where('owner_id', auth()->id());
     }
+
+    $query->when($search, function ($query) use ($search) {
+        $query->where('name', 'like', "%{$search}%");
+    });
+
+    $query->when($status, function ($query) use ($status) {
+        if ($status == 'upcoming') {
+            $query->where('date_end', '>=', now());
+        } elseif ($status == 'past') {
+            $query->where('date_end', '<', now());
+        }
+    });
+
+    $events = $query->latest()->get();
+
+    return Inertia::render('Event/Index', [
+        'events' => $events,
+    ]);
+}
 
     /**
      * Show the form for creating a new resource.
