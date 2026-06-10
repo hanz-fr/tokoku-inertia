@@ -205,9 +205,14 @@ class EventController extends Controller
      */
     public function edit($id)
     {
-        $event = Event::with('tickets')
-            ->where('owner_id', auth()->id())
-            ->findOrFail($id);
+        if (Auth::user()->role == 'admin') {
+            $event = Event::with('tickets')->findOrFail($id);
+        } else {
+            $event = Event::with('tickets')
+                ->where('owner_id', auth()->id())
+                ->findOrFail($id);
+        }
+        
 
         // Format dates for the <input type="datetime-local"> element
         $event->date_start_formatted = $event->date_start ? $event->date_start->format('Y-m-d\TH:i') : null;
@@ -234,9 +239,13 @@ class EventController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $event = Event::where('id', $id)
-            ->where('owner_id', auth()->id())
-            ->firstOrFail();
+        if (Auth::user()->role == 'admin') {
+            $event = Event::where('id', $id)->firstOrFail();
+        } else {
+            $event = Event::where('id', $id)
+                ->where('owner_id', auth()->id())
+                ->firstOrFail();
+        }
 
         try {
             $validated = $request->validate([
@@ -379,9 +388,13 @@ class EventController extends Controller
      */
     public function destroy($id)
     {
-        $event = Event::where('id', $id)
-            ->where('owner_id', auth()->id())
-            ->firstOrFail();
+        if (Auth::user()->role == 'admin') {
+            $event = Event::where('id', $id)->firstOrFail();
+        } else {
+            $event = Event::where('id', $id)
+                ->where('owner_id', auth()->id())
+                ->firstOrFail();
+        }
 
         if ($event->poster) {
             Storage::disk('public')->delete($event->poster);
